@@ -1,2 +1,6 @@
 @import url(/css/bases/reset.css);
 @import url(/css/bases/variables.css);
+@import url(/css/common/button.css);
+
+@import url(/css/header/header.css);
+@import url(/css/footer/footer.css);
