@@ -1,0 +1,29 @@
+@import url(/css/bases/reset.css);
+@import url(/css/bases/variables.css);
+@import url(/css/common/button.css);
+
+@import url(/css/header/header.css);
+@import url(/css/footer/footer.css);
+
+
+/* Шрифты  */
+
+@font-face {
+  font-family: с;
+  src: url(../fonts/Montserrat-Medium.woff2);
+}
+
+@font-face {
+  font-family: Montserrat-Regular;
+  src: url(../fonts/Montserrat-Regular.woff2);
+}
+
+@font-face {
+  font-family: Montserrat-SemiBold;
+  src: url(../fonts/Montserrat-SemiBold.woff2);
+}
+
+@font-face {
+  font-family: face;
+  src: url();
+}
