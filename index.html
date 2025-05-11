@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css\style.css">
+  <script defer src="js\swiper.js"></script>
   <script defer src="js\main.js"></script>
   <title>Delivery</title>
 </head>
@@ -14,8 +15,187 @@
     <header class="header">
 
     </header>
-    <main class="main"></main>
-    <footer class="footer"></footer>
+    <main class="main">
+      <section class="hero">
+        <div class="container">
+          <div class="hero__content">
+            <!-- <img class="hero__img" src="images\hero\heroBg.png" alt=""> -->
+            <div class="hero__box-btn-top">
+              <a href="##" class="hero__box-btn-top-link">Людям</a>
+              <a href="##" class="hero__box-btn-top-link">Бизнесу</a>
+            </div>
+            <div class="hero__info-box">
+              <div class="hero__box-text">
+                <h1 class="hero__title title">и вам повезет</h1>
+                <p class="hero__description">Доставка без границ
+                  Быстро, надежно и удобно — мы обеспечим доставку вашего груза в любую точку!
+                  С нами ваш груз в надежных руках!</p>
+              </div>
+              <button class="btn">
+                <span>Оформить доставку</span>
+                <div class="btn-arrow-box">
+                  <svg class="btn-arrow" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17 5L17.6 4.2L18.6667 5L17.6 5.8L17 5ZM1 6C0.447716 6 0 5.55228 0 5C0 4.44772 0.447716 4 1 4V6ZM11.6667 1L12.2667 0.2L17.6 4.2L17 5L16.4 5.8L11.0667 1.8L11.6667 1ZM17 5L17.6 5.8L12.2667 9.8L11.6667 9L11.0667 8.2L16.4 4.2L17 5ZM17 5V6H1V5V4H17V5Z" />
+                  </svg>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="advantages">
+        <div class="container">
+          <div class="advantages__content-box">
+            <h2 class="advantages__title">почему мы?</h2>
+            <div class="advantages__content">
+              <div class="advantages__cards">
+                <div class="advantages__card">
+                  <h3 class="advantages__card-title">ЧЕСТНАЯ ЦЕНА</h3>
+                  <p class="advantages__card-description">Мы предлагаем конкурентоспособные рыночные цены на услуги по домашнему переезду, офисному переезду и другим видам грузоперевозок без скрытых комиссий и мелкого шрифта. Если вы найдете более низкую цену, мы не будем ее перебивать. Однако мы гарантируем, что наша цена останется неизменной на протяжении всего пути вашего груза от точки А до точки Б.</p>
+                </div>
+              </div>
+              <button class="btn">
+                <span> Задать вопрос</span>
+                <div class="btn-arrow-box">
+                  <svg class="btn-arrow" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17 5L17.6 4.2L18.6667 5L17.6 5.8L17 5ZM1 6C0.447716 6 0 5.55228 0 5C0 4.44772 0.447716 4 1 4V6ZM11.6667 1L12.2667 0.2L17.6 4.2L17 5L16.4 5.8L11.0667 1.8L11.6667 1ZM17 5L17.6 5.8L12.2667 9.8L11.6667 9L11.0667 8.2L16.4 4.2L17 5ZM17 5V6H1V5V4H17V5Z" />
+                  </svg>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="about">
+        <div class="container">
+          <div class="about__content-box">
+            <h2 class="about__title">о компании</h2>
+            <div class="about__content">
+              <div class="about__info-box about__info">
+                <div class="about__info-top">
+                  <p class="about__info-description">
+                    Наша компания предлагает услуги по грузоперевозкам с большим опытом и профессиональной командой.
+                    Мы располагаем транспортными средствами от 1 до 20 тонн, включая тенты, изотермические фургоны, рефрижераторы, бортовые машины и манипуляторы
+                  </p>
+                  <button class="btn">
+                    <span>Задать вопрос</span>
+                    <div class="btn-arrow-box">
+                      <svg class="btn-arrow" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 5L17.6 4.2L18.6667 5L17.6 5.8L17 5ZM1 6C0.447716 6 0 5.55228 0 5C0 4.44772 0.447716 4 1 4V6ZM11.6667 1L12.2667 0.2L17.6 4.2L17 5L16.4 5.8L11.0667 1.8L11.6667 1ZM17 5L17.6 5.8L12.2667 9.8L11.6667 9L11.0667 8.2L16.4 4.2L17 5ZM17 5V6H1V5V4H17V5Z" />
+                      </svg>
+                    </div>
+                  </button>
+                </div>
+                <div class="about__info-bottom">
+                  <h3 class="about__info-bottom-title">
+                    Наши партнеры:
+                  </h3>
+                  <div class="swiper brends-swiper ">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <img src="images\brends\5afa048cb9fb328e302ee275c142306c4e8fa9b9.png" alt="">
+                      </div>
+                      <div class="swiper-slide"></div>
+                      <div class="swiper-slide">Slide 3</div>
+                      <div class="swiper-slide">Slide 4</div>
+                      <div class="swiper-slide">Slide 5</div>
+                      <div class="swiper-slide">Slide 6</div>
+                      <div class="swiper-slide">Slide 7</div>
+                      <div class="swiper-slide">Slide 8</div>
+                      <div class="swiper-slide">Slide 9</div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                  </div>
+                </div>
+                <!-- <img src="images\about\11ed38fa89388a2e638cbc8fa9615175905aa543.jpg" alt="" class="about__info-img"> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="main-form">
+        <div class="container">
+          <div class="main-form__content">
+            <h2 class="main-form__title">Заголовок надо придумать</h2>
+            <p class="main-form__description">
+              Мы ценим каждого клиента и готовы предложить индивидуальные решения, учитывающие все ваши требования и пожелания.
+            </p>
+            <div class="main-form__btn-box">
+              <button class="form-btn">
+                Заказать звонок
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="faq">
+        <div class="container">
+          <div class="faq__content">
+            <h2 class="faq__title">вопрос ответ</h2>
+            <div class="faq__accardion-box accardion">
+              <button class="accardion__title-btn">Вопрос частый
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 5V19" stroke="#333333" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M5 12H19" stroke="#333333" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div class="accardion__content">
+                <p class="accardion__description">
+                  Мы предлагаем конкурентоспособные рыночные цены на услуги по домашнему переезду, офисному переезду и другим видам грузоперевозок без скрытых комиссий и мелкого шрифта. Если вы найдете более низкую цену, мы не будем ее перебивать. Однако мы гарантируем, что наша цена останется неизменной на протяжении всего пути вашего груза от точки А до точки Б.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__content">
+          <div class="footer__content-top footer-top">
+            <div class="footer-top__columns">
+              <div class="footer-top__column">
+                <div class="footer-top__column-social-box">
+                  <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12.5" cy="13.4414" r="9.9375" stroke="#333333" stroke-width="2" />
+                    <path d="M17.9583 8.91702C18.0557 8.28775 17.4573 7.79106 16.8978 8.03672L5.75376 12.9296C5.35252 13.1057 5.38187 13.7135 5.79802 13.846L8.09621 14.5779C8.53483 14.7176 9.00979 14.6453 9.3928 14.3807L14.5742 10.801C14.7304 10.693 14.9008 10.9152 14.7673 11.0528L11.0376 14.8982C10.6758 15.2712 10.7476 15.9032 11.1828 16.1762L15.3586 18.7948C15.8269 19.0885 16.4294 18.7934 16.517 18.2275L17.9583 8.91702Z" fill="#333333" />
+                  </svg>
+                  <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 24.3789C18.5406 24.3789 23.4375 19.482 23.4375 13.4414C23.4375 7.40079 18.5406 2.50391 12.5 2.50391C6.45939 2.50391 1.5625 7.40079 1.5625 13.4414C1.5625 15.403 2.0789 17.244 2.98318 18.8359L1.5625 24.3789L7.27724 23.0537C8.8292 23.8988 10.6085 24.3789 12.5 24.3789ZM12.5 22.6962C17.6113 22.6962 21.7548 18.5527 21.7548 13.4414C21.7548 8.33012 17.6113 4.1866 12.5 4.1866C7.38871 4.1866 3.24519 8.33012 3.24519 13.4414C3.24519 15.4149 3.86289 17.2441 4.9155 18.7463L4.08654 21.8549L7.24995 21.064C8.74169 22.0934 10.5504 22.6962 12.5 22.6962Z" fill="#333333" />
+                    <path d="M9.76564 8.36336C9.50559 7.84103 9.10666 7.88728 8.70365 7.88728C7.98341 7.88728 6.86035 8.75 6.86035 10.3556C6.86035 11.6715 7.44019 13.1119 9.39408 15.2667C11.2797 17.3462 13.7573 18.4219 15.8142 18.3853C17.8711 18.3487 18.2943 16.5786 18.2943 15.9809C18.2943 15.7159 18.1299 15.5838 18.0166 15.5478C17.3157 15.2114 16.0229 14.5847 15.7288 14.4669C15.4346 14.3491 15.281 14.5084 15.1856 14.5951C14.9188 14.8493 14.39 15.5984 14.209 15.7669C14.0279 15.9354 13.758 15.8502 13.6457 15.7865C13.2324 15.6206 12.1117 15.1221 11.2183 14.2561C10.1135 13.1852 10.0487 12.8167 9.84055 12.4887C9.67403 12.2263 9.79622 12.0653 9.8572 11.995C10.0952 11.7203 10.4239 11.2963 10.5713 11.0855C10.7187 10.8748 10.6017 10.5549 10.5315 10.3556C10.2295 9.49861 9.97368 8.78122 9.76564 8.36336Z" fill="#333333" />
+                  </svg>
+                  <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.0439 3.50391H12.9561C15.4586 3.50391 17.2369 3.50607 18.585 3.68652C19.7399 3.84116 20.4625 4.11402 20.9922 4.54688L21.208 4.74219C21.7516 5.29002 22.0803 6.04613 22.2559 7.3623C22.4352 8.70723 22.4375 10.479 22.4375 12.9678V13.8975C22.4375 16.3952 22.4353 18.1713 22.2559 19.5186C22.0803 20.8371 21.7515 21.5929 21.208 22.1406C20.6596 22.6889 19.9061 23.0197 18.5879 23.1963C17.2411 23.3767 15.4633 23.3789 12.9561 23.3789H12.0439C9.54613 23.3789 7.77061 23.3767 6.42383 23.1963C5.10482 23.0196 4.34888 22.6887 3.80078 22.1406C3.25256 21.5924 2.92179 20.8362 2.74512 19.5195C2.56477 18.1751 2.5625 16.4038 2.5625 13.915V12.9854C2.5625 10.4876 2.56473 8.71153 2.74414 7.36426C2.91973 6.04574 3.24854 5.2899 3.79199 4.74219C4.34038 4.19389 5.09387 3.86313 6.41211 3.68652C7.7589 3.50609 9.53672 3.50391 12.0439 3.50391Z" stroke="#333333" stroke-width="2" />
+                    <path d="M13.128 18.1289C8.32341 18.1289 5.58294 14.903 5.46875 9.53516H7.87545C7.9545 13.475 9.72878 15.1439 11.1342 15.488V9.53516H13.4003V12.9331C14.7881 12.7868 16.2462 11.2384 16.7381 9.53516H19.0042C18.8189 10.4185 18.4494 11.2549 17.9189 11.992C17.3884 12.7292 16.7083 13.3512 15.9212 13.8191C16.7998 14.2467 17.5759 14.8519 18.1982 15.5948C18.8205 16.3377 19.2748 17.2014 19.5312 18.1289H17.0367C16.8065 17.3233 16.3387 16.6022 15.6918 16.0559C15.0449 15.5096 14.2478 15.1624 13.4003 15.0579V18.1289H13.128Z" fill="#333333" />
+                  </svg>
+                </div>
+                <span class="footer-top__column-description">ООО....</span>
+                <span class="footer-top__column-description">ООО....</span>
+              </div>
+              <div class="footer-top__column">
+                <a href="tel:##" target="_blank" class="footer-top__column-description">+7(000)000-00-00</a>
+                <a href="tel:##" target="_blank" class="footer-top__column-description">+7(000)000-00-00</a>
+                <a href="mailto:##" target="_blank" class="footer-top__column-description">info@company.com</a>
+              </div>
+              <div class="footer-top__column">
+                <span class="footer-top__column-description">
+                  Адрес:
+                  <a href="##">
+                    Где находится предприятие
+                  </a>
+                </span>
+                <span class="footer-top__column-description">с 9:00 до 18:00 по будням</span>
+              </div>
+            </div>
+          </div>
+          <div class="footer__content-bottom footer-bottom">
+            <a href=" ##" target="_blank" class="footer-top__column-description">Политика конфиндециальности</a>
+            <span class="footer-bottom-descripter">© RLM24</span>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
 </body>
 

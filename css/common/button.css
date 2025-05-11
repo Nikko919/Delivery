@@ -1,0 +1,106 @@
+.btn {
+  min-width: 245px;
+  display: flex;
+  align-items: center;
+  gap: 0 10px;
+  background-color: transparent;
+}
+
+.btn>span {
+  display: inline-block;
+  font-family: var(--Montserrat-SM);
+  font-size: 16px;
+  padding: 15px 20px;
+  /*padding: 15px 30px;
+  */
+  background-color: var(--color-btn);
+  color: var(--color-hero-title);
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+  text-align: center;
+  transition: 0.3s ease-in;
+  -webkit-transition: 0.3s ease-in;
+  -moz-transition: 0.3s ease-in;
+  -ms-transition: 0.3s ease-in;
+  -o-transition: 0.3s ease-in;
+}
+
+.btn>div {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-btn);
+  border-radius: 40px;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  -ms-border-radius: 40px;
+  -o-border-radius: 40px;
+  transition: 0.3s ease-in;
+
+}
+
+.btn-arrow {
+  width: 16px;
+  height: 8px;
+}
+
+.btn-arrow>path {
+  fill: var(--color-hero-title);
+
+}
+
+/* form-btn */
+.form-btn {
+  padding: 15px 30px;
+  font-family: var(--Montserrat-SM);
+  font-size: 16px;
+  line-height: 100%;
+  background-color: var(--color-btn);
+  color: var(--color-hero-title);
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+  text-align: center;
+}
+
+
+@media (min-width:1400px) {
+  .btn>span {
+    font-size: 20px;
+    padding: 15px 30px;
+  }
+
+  .btn-arrow {
+    width: 19px;
+    height: 10px;
+  }
+
+  .form-btn {
+    padding: 20px 100px;
+    font-size: 20px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+  }
+}
+
+@media (hover:hover) {
+
+  .btn:hover>span {
+    background-color: var(--color-noactive);
+  }
+
+  .btn:hover>.btn-arrow-box {
+    background-color: var(--color-noactive);
+
+  }
+}

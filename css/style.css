@@ -1,15 +1,18 @@
 @import url(/css/bases/reset.css);
 @import url(/css/bases/variables.css);
+@import url(/css/common/common.css);
 @import url(/css/common/button.css);
-
+@import url(/css/components/swiper.css);
 @import url(/css/header/header.css);
+@import url(/css/section/hero.css);
+@import url(/css/section/advantages.css);
 @import url(/css/footer/footer.css);
 
 
 /* Шрифты  */
 
 @font-face {
-  font-family: с;
+  font-family: Montserrat-Medium;
   src: url(../fonts/Montserrat-Medium.woff2);
 }
 
@@ -24,6 +27,13 @@
 }
 
 @font-face {
-  font-family: face;
-  src: url();
+  font-family: STKosmoletFuturism;
+  src: url(../fonts/STKosmoletFuturism.woff2);
+}
+
+.container {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 10px;
+
 }

@@ -35,7 +35,7 @@ body {
   height: 100%;
   width: 100%;
   font-size: 100%;
-  line-height: 1;
+  /* line-height: 1; */
   font-size: 14px;
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
@@ -86,4 +86,17 @@ h5,
 h6 {
   font-size: inherit;
   font-weight: 400;
+}
+
+body {
+  background-color: var(--color-body-bg);
+
+}
+
+* {
+  color: rgba(51, 51, 51, 1);
+  font-size: 14px;
+  font-family: var(--Montserrat-R);
+  line-height: 130%;
+  user-select: none;
 }
