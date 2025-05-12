@@ -1,4 +1,20 @@
 .title {
   font-family: var(--ST-Kosmolet);
   font-weight: 400;
+  line-height: 100%;
+}
+
+.text {
+  font-family: var(--Montserrat-R);
+  font-size: 14px;
+  line-height: 120%;
+  color: var(--color-text);
+}
+
+
+
+@media (min-width:1400px) {
+  .text {
+    font-size: 18px;
+  }
 }

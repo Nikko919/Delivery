@@ -1,5 +1,6 @@
 :root {
   --color-main-bg: rgba(239, 239, 237, 1);
+  --color-card-bg: rgba(255, 255, 255, 0.5);
   --color-text: rgba(51, 51, 51, 1);
   --color-section-title: rgba(151, 151, 151, 0.2);
   --color-body-bg: rgba(239, 239, 237, 1);

@@ -1,5 +1,6 @@
 .hero {
   margin-top: 20px;
+  margin-bottom: 120px;
 }
 
 .hero__content {
@@ -94,6 +95,11 @@
 }
 
 @media(min-width:1200px) {
+  .hero {
+    margin-top: 20px;
+    margin-bottom: 200px;
+  }
+
   .hero__content {
     min-height: 700px;
     background-position: 0 50%;
