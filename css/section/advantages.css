@@ -31,7 +31,7 @@
 }
 
 .advantages__card {
-  max-width: 370px;
+  /* max-width: 370px; */
   background-color: var(--color-card-bg);
   padding: 20px;
   border-radius: 20px;
@@ -77,6 +77,10 @@
     transform: rotate(180deg);
     text-wrap: nowrap;
     -webkit-transform: rotate(180deg);
+  }
+
+  .advantages__card {
+    max-width: 370px;
   }
 }
 

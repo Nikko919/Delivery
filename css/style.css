@@ -2,11 +2,12 @@
 @import url(../css/bases/variables.css);
 @import url(../css/common/common.css);
 @import url(../css/common/button.css);
-@import url(../css/components/swiper.css);
+@import url(../css/components/swiper-bundle.css.css);
 @import url(../css/header/header.css);
 @import url(../css/section/hero.css);
 @import url(../css/section/advantages.css);
 @import url(../css/section/about.css);
+@import url(../css/section/main-form.css);
 @import url(../css/footer/footer.css);
 
 

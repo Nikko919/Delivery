@@ -1,6 +1,14 @@
 var swiper = new Swiper(".brends-swiper", {
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
+  slidesPerView: 4,
+  spaceBetween: 5,
+  breakpoints: {
+    1200: {
+      slidesPerView: 3,
+    }
   },
+  navigation: {
+    nextEl: ".brends-swiper-next",
+    prevEl: ".brends-swiper-prev",
+  },
+
 });
