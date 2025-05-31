@@ -1,0 +1,120 @@
+.faq {
+  margin-bottom: 120px;
+}
+
+.faq__title {
+  font-size: 93px;
+  /* font-size: 80px; */
+  line-height: 100%;
+  text-align: center;
+  color: var(--color-section-title);
+  margin-bottom: 25px;
+}
+
+
+.accordion__title-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
+  font-family: var(--Montserrat-SM);
+  font-size: 20px;
+}
+
+.accordion__title-btn.active {
+  border-bottom: none;
+}
+
+.accordion__title-btn svg {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.accordion__content {
+  /*margin-top: 20px;
+  */
+  border-radius: 20px;
+  background-color: var(--color-noactive);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease, overflow 0.3s ease, visibility 0.3s ease, margin-top 0.3s ease;
+  -webkit-transition: max-height 0.3s ease, opacity 0.3s ease, overflow 0.3s ease, visibility 0.3s ease, margin-top 0.3s ease;
+  -moz-transition: max-height 0.3s ease, opacity 0.3s ease, overflow 0.3s ease, visibility 0.3s ease, margin-top 0.3s ease;
+  -ms-transition: max-height 0.3s ease, opacity 0.3s ease, overflow 0.3s ease, visibility 0.3s ease, margin-top 0.3s ease;
+  -o-transition: max-height 0.3s ease, opacity 0.3s ease, overflow 0.3s ease, visibility 0.3s ease, margin-top 0.3s ease;
+}
+
+.accordion__content.active {
+  /* max-height: none; */
+  /* max-height: 100%; */
+  opacity: 1;
+  visibility: visible;
+  margin-top: 20px;
+}
+
+.accordion-text__box {
+  padding: 20px;
+}
+
+.accordion__title-btn.active svg {
+  transform: rotate(45deg);
+}
+
+.accordion__description {
+  font-family: var(--Montserrat-R);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+@media (min-width:1200px) {
+  .faq {
+    margin-bottom: 200px;
+  }
+
+  .faq__content {
+    display: flex;
+    align-items: flex-start;
+    gap: 45px;
+  }
+
+  .faq__title {
+    font-size: 135px;
+    text-align: center;
+    color: var(--color-section-title);
+    margin-bottom: 0px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    text-wrap: nowrap;
+    text-align: end;
+    -webkit-transform: rotate(180deg);
+  }
+
+  .accordion__title-btn {
+    font-size: 25px;
+  }
+
+  .accordion__description {
+    font-size: 18px;
+  }
+
+  .accordion__content {
+    /* margin-top: 30px; */
+  }
+}
+
+@media (min-width:1400px) {
+  .faq__title {
+    margin-left: -25px;
+
+  }
+}

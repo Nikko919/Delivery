@@ -8,7 +8,16 @@
 @import url(../css/section/advantages.css);
 @import url(../css/section/about.css);
 @import url(../css/section/main-form.css);
+@import url(../css/section/faq.css);
+@import url(../css/section/intro.css);
+@import url(../css/section/page-form.css);
+@import url(../css/components/form-filter.css);
+@import url(../css/components/burger.css);
+@import url(../css/components/flatpickr.min.css);
+@import url(../css/components/form-delivery.css);
+
 @import url(../css/footer/footer.css);
+@import url(../css/components/popup.css);
 
 
 /* Шрифты  */

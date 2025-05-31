@@ -3,10 +3,10 @@
 }
 
 .about__title {
-  font-size: 80px;
+  font-size: 93px;
+  /* font-size: 80px; */
   line-height: 100%;
-  text-align: left;
-  /* text-align: center; */
+  text-align: center;
   color: var(--color-section-title);
   margin-bottom: 25px;
 }

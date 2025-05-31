@@ -46,6 +46,10 @@
   -o-transition: .3s ease-in;
 }
 
+.hero__box-btn-top-link-hover {
+  pointer-events: none;
+}
+
 .hero__title {
   font-size: 80px;
   color: var(--color-hero-title);

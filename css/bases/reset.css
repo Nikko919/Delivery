@@ -100,3 +100,7 @@ body {
   line-height: 130%;
   user-select: none;
 }
+
+html {
+  scroll-behavior: smooth;
+}
