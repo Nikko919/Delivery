@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   flatpickr(".date", {
     dateFormat: "d.m.Y",
+    minDate: "today",
+    disableMobile: true,
     locale: "ru",
     onChange: function () {
       // Скрываем плейсхолдер при выборе даты

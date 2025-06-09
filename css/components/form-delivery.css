@@ -4,6 +4,62 @@
   z-index: 99;
 }
 
+.policy-box__custom-checkbox.custom-checkbox-error {
+  border: 1px solid red;
+}
+
+
+/* тобы */
+.form-delivery-tab {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.form-delivery-tab__btn {
+  background-color: var(--color-noactive);
+}
+
+.form-delivery-tab__btn.active {
+  background: var(--color-btn);
+}
+
+.tab-content__item {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.tab-content__item.active {
+  max-height: 100%;
+  /* Значение больше ожидаемой высоты */
+  opacity: 1;
+}
+
+/* .tab-content__item {
+  display: none;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.tab-content__item.active {
+  display: block;
+}
+
+.tab-content__item {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tab-content__item.active {
+  opacity: 1;
+  display: block;
+} */
+
+/* конец табов  */
+
+
 .form-delivery__box {
   overflow: hidden;
   padding: 20px 10px;
@@ -38,6 +94,44 @@
 
   margin-bottom: 15px;
 }
+
+
+
+/* Стиль для невалидных полей */
+.invalid-field {
+  border: 1px solid #ff3860 !important;
+  animation: shake 0.5s;
+}
+
+/* Анимация для привлечения внимания */
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20%,
+  60% {
+    transform: translateX(-5px);
+  }
+
+  40%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+/* Для плавного изменения состояния */
+input {
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+
+
+
+
+
 
 .form-delivery__input-group>span {
   display: inline-block;
@@ -174,6 +268,7 @@
 }
 
 .options-box__btn-option {
+  cursor: pointer;
   position: relative;
   padding: 10px 15px;
   border-radius: 10px;
@@ -641,9 +736,11 @@
   position: absolute;
   /*left: 50%;
   */
-  right: 50%;
-  transform: translate(0, 10px);
-  top: 15px;
+  right: 0;
+  transform: translate(0, -50%);
+  /*top: 15px;
+  */
+  bottom: -50%;
   background: rgba(255, 255, 255, 1);
   backdrop-filter: blur(5px);
   color: var(--color-text);
@@ -656,10 +753,10 @@
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
-  -webkit-transform: translate(0, 10px);
-  -moz-transform: translate(0, 10px);
-  -ms-transform: translate(0, 10px);
-  -o-transform: translate(0, 10px);
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
   font-family: var(--Montserrat-R);
   font-size: 14px;
   color: var(--color-text);
@@ -915,6 +1012,31 @@
   position: relative;
 }
 
+.terms__item {
+  max-width: 500px;
+  font-size: 18px;
+  padding-left: 0;
+  margin-left: 0;
+  position: relative;
+}
+
+.terms__item>.terms__item-link {
+  display: inline-block;
+  font-family: var(--Montserrat-R);
+  font-size: 18px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.terms__item:first-child::after {
+  content: none;
+}
+
+/* Отключение ::after для последнего элемента */
+.terms__item:last-child::after {
+  content: none;
+}
+
 /* Базовые стили для всех подсказок */
 [role="tooltip"] {
   /* Позиционирование и box model */
@@ -995,6 +1117,25 @@
 .other-block__tooltip {
   max-width: 300px;
 }
+
+
+/* Вторая новая форма  */
+
+
+
+/* конец новой формы */
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Для мобильных устройств */
 @media (max-width: 768px) {
@@ -1109,6 +1250,7 @@
     margin-bottom: 60px;
 
   }
+
 
   /* выпадающий список */
   .popup-option__close-btn>svg {

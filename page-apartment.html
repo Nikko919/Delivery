@@ -5,12 +5,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css\style.css">
-  <script defer src="js\swiper-bundle.js"></script>
+  <script defer src="js/swiper-bundle.js"></script>
   <script defer src="js/accordion.js"></script>
   <script defer src="js/burger.js"></script>
+  <script defer src="js/popup-options.js"></script>
 
-  <script defer src="js\main.js"></script>
+  <!-- библиотека подсказок -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.7.0"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.7.0"></script>
+
+  <!-- Подключаем Cleave.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+  <!-- Дополнительно: плагин для телефонных номеров -->
+  <script defer src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/addons/cleave-phone.ru.js"></script>
+  <script defer src="js\cleaveB.js"></script>
+
+  <script defer src="js\radioNone.js"></script>
+  <script defer src="js/main.js"></script>
   <script defer src="js\formClouse.js"></script>
+  <script defer src="js\flatpickr.min.js"></script>
+  <script defer src="js\ru.js"></script>
+
+  <script defer src="js\dateP.js"></script>
+
+  <!-- подсказка адреса -->
+  <script defer src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/suggestions-jquery@latest/dist/css/suggestions.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/suggestions-jquery@latest/dist/js/jquery.suggestions.min.js"></script>
+  <script defer src="js\address.js"></script>
+
   <title>Delivery</title>
 </head>
 
@@ -117,6 +140,1009 @@
           </div>
         </div>
       </section>
+
+      <section class="form-delivery">
+        <div class="container">
+          <form method="POST" action="moving-send.php" class="form-delivery__form">
+            <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
+            <div class="form-delivery__box">
+              <h3 class="form-delivery__title advantages__card-title ">Переезд</h3>
+              <!-- Инпуты откуда куда  -->
+              <div class="form-delivery__input-box">
+                <div class="form-delivery__input-group">
+                  <span>Адрес отправки</span>
+                  <input name="from" type="text" class="form-delivery__input input-addres" placeholder="Откуда:">
+                </div>
+                <div class="arrow__box">
+                  <svg viewBox="0 0 38 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.33331 10L5.84378 10.872L4.29056 10L5.84378 9.12802L6.33331 10ZM35.8333 18C35.8333 18.5523 35.3856 19 34.8333 19C34.281 19 33.8333 18.5523 33.8333 18L35.8333 18ZM15.2396 15L14.75 15.872L5.84378 10.872L6.33331 10L6.82285 9.12802L15.7291 14.128L15.2396 15ZM6.33331 10L5.84378 9.12802L14.75 4.12802L15.2396 5L15.7291 5.87198L6.82285 10.872L6.33331 10ZM6.33331 10L6.33331 9L28.8333 9L28.8333 10L28.8333 11L6.33331 11L6.33331 10ZM34.8333 16L35.8333 16L35.8333 18L34.8333 18L33.8333 18L33.8333 16L34.8333 16ZM28.8333 10L28.8333 9C32.6993 9 35.8333 12.134 35.8333 16L34.8333 16L33.8333 16C33.8333 13.2386 31.5947 11 28.8333 11L28.8333 10Z" fill="#333333" />
+                    <path d="M31.6667 38L32.1562 37.128L33.7094 38L32.1562 38.872L31.6667 38ZM2.16669 30C2.16669 29.4477 2.6144 29 3.16668 29C3.71897 29 4.16669 29.4477 4.16669 30L2.16669 30ZM22.7604 33L23.25 32.128L32.1562 37.128L31.6667 38L31.1772 38.872L22.2709 33.872L22.7604 33ZM31.6667 38L32.1562 38.872L23.25 43.872L22.7604 43L22.2709 42.128L31.1772 37.128L31.6667 38ZM31.6667 38L31.6667 39L9.16669 39L9.16669 38L9.16669 37L31.6667 37L31.6667 38ZM3.16669 32L2.16669 32L2.16669 30L3.16669 30L4.16669 30L4.16669 32L3.16669 32ZM9.16669 38L9.16669 39C5.30069 39 2.16669 35.866 2.16669 32L3.16669 32L4.16669 32C4.16669 34.7614 6.40526 37 9.16669 37L9.16669 38Z" fill="#777777" />
+                  </svg>
+
+                </div>
+                <div class="form-delivery__input-group">
+                  <span>Адрес доставки</span>
+                  <input name="to" type="text" class="form-delivery__input input-addres" placeholder="Куда:">
+                </div>
+              </div>
+              <!-- Выбор опций -->
+              <div class="form-delivery__options-box options-box">
+                <div class="options-box__input-group">
+                  <input name="date" type="text" class="date" id="datepicker" placeholder="">
+                  <span class="fake-placeholder">Дата:</span>
+                  <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 1.55566L7 7.55566L1 1.55566" stroke="#333333" stroke-width="2" />
+                  </svg>
+                </div>
+                <div class="options-box__input-group">
+                  <input name="time" type="text" class="time" id="time" placeholder="">
+                  <span class="fake-placeholder fake-placeholder__time">Время:</span>
+                  <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 1.55566L7 7.55566L1 1.55566" stroke="#333333" stroke-width="2" />
+                  </svg>
+                </div>
+                <div class="options-box__btn-option btn-option__open ">Опции
+                  к заказу
+                  <div class="btn-option__icon-box ">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M11 8L20 8" stroke="#333333" stroke-width="2" stroke-linecap="round" />
+                      <path d="M4 16L14 16" stroke="#333333" stroke-width="2" stroke-linecap="round" />
+                      <ellipse cx="7" cy="8" rx="3" ry="3" transform="rotate(90 7 8)" stroke="#333333" stroke-width="2" stroke-linecap="round" />
+                      <ellipse cx="17" cy="16" rx="3" ry="3" transform="rotate(90 17 16)" stroke="#333333" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <div class="popup__option-box popup-option-box popup-option">
+                    <div class="popup-option__top">
+                      <div class="popup-option__close-btn">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M2 1.5L22 22.5M22 1.5L2 22.5" stroke="#333333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </div>
+                      <div class="popup-option__save-btn" id="save-btn">Сохранить</div>
+                    </div>
+                    <div class="popup-option__content popup-option-content">
+                      <div class="popup-option-content__item">
+                        <div class="checkbox-item">
+                          <span class="checkbox-label">Грузчики</span>
+                          <input name="loaders" value="1" type="checkbox" class="custom-checkbox" id="apg1">
+                          <label for="apg1">
+                            <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1 9L4.23309 11.4248C4.66178 11.7463 5.26772 11.6728 5.60705 11.2581L14 1" stroke="white" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                          </label>
+                        </div>
+                        <div class="checkbox-item">
+                          <span class="checkbox-label">Страховать груз </span>
+                          <input name="insurance" value="1" type="checkbox" class="custom-checkbox" id="apg2">
+                          <label for="apg2">
+                            <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1 9L4.23309 11.4248C4.66178 11.7463 5.26772 11.6728 5.60705 11.2581L14 1" stroke="white" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                          </label>
+                        </div>
+                        <div class="dropdown">
+                          <div class="dropdown-header checkbox-label">
+                            <span>Способ перевозки</span>
+                            <div class="dropdown-header__box-svg">
+                              <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 1.55566L7 7.55566L1 1.55566" stroke="#333333" stroke-width="2" />
+                              </svg>
+                            </div>
+                          </div>
+                          <div class="dropdown-list">
+                            <div class="checkbox-item">
+                              <span class="checkbox-label checkbox-label__title">Генеральные грузы</span>
+                              <input name="transport_type[]" value="Генеральные грузы" type="checkbox" class="custom-checkbox" id="apd1">
+                              <label for="apd1">
+                                <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M1 9L4.23309 11.4248C4.66178 11.7463 5.26772 11.6728 5.60705 11.2581L14 1" stroke="white" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                              </label>
+                            </div>
+                            <div class="checkbox-item">
+                              <span class="checkbox-label checkbox-label__title">Догрузы</span>
+                              <input name="transport_type[]" value="Догрузы" type="checkbox" class="custom-checkbox" id="apd2">
+                              <label for="apd2">
+                                <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M1 9L4.23309 11.4248C4.66178 11.7463 5.26772 11.6728 5.60705 11.2581L14 1" stroke="white" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="dropdown">
+                          <div class="dropdown-header checkbox-label">
+                            <span>Упаковка</span>
+                            <div class="dropdown-header__box-svg">
+                              <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 1.55566L7 7.55566L1 1.55566" stroke="#333333" stroke-width="2" />
+                              </svg>
+                            </div>
+                          </div>
+                          <div class="dropdown-list">
+                            <div class="checkbox-item">
+                              <span class="checkbox-label checkbox-label__title">Паллеты</span>
+                              <input name="packaging[]" value="Паллеты" type="checkbox" class="custom-checkbox" id="apy1">
+                              <label for="apy1">
+                                <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M1 9L4.23309 11.4248C4.66178 11.7463 5.26772 11.6728 5.60705 11.2581L14 1" stroke="white" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                              </label>
+                            </div>
+                            <div class="checkbox-item">
+                              <span class="checkbox-label checkbox-label__title"> Ящики</span>
+                              <input name="packaging[]" value="Ящики" type="checkbox" class="custom-checkbox" id="apy2">
+                              <label for="apy2">
+                                <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M1 9L4.23309 11.4248C4.66178 11.7463 5.26772 11.6728 5.60705 11.2581L14 1" stroke="white" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                              </label>
+                            </div>
+                            <div class="checkbox-item">
+                              <span class="checkbox-label checkbox-label__title">Коробки</span>
+                              <input name="packaging[]" value="Коробки" type="checkbox" class="custom-checkbox" id="apy3">
+                              <label for="apy3">
+                                <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M1 9L4.23309 11.4248C4.66178 11.7463 5.26772 11.6728 5.60705 11.2581L14 1" stroke="white" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                              </label>
+                            </div>
+                            <div class="checkbox-item">
+                              <span class="checkbox-label checkbox-label__title">Мешки</span>
+                              <input name="packaging[]" value="Мешки" type="checkbox" class="custom-checkbox" id="apy4">
+                              <label for="apy4">
+                                <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M1 9L4.23309 11.4248C4.66178 11.7463 5.26772 11.6728 5.60705 11.2581L14 1" stroke="white" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                              </label>
+                            </div>
+                            <div class="checkbox-item">
+                              <span class="checkbox-label checkbox-label__title">Бочки</span>
+                              <input name="packaging[]" value="Бочки" type="checkbox" class="custom-checkbox" id="apy5">
+                              <label for="apy5">
+                                <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M1 9L4.23309 11.4248C4.66178 11.7463 5.26772 11.6728 5.60705 11.2581L14 1" stroke="white" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                              </label>
+                            </div>
+                            <div class="checkbox-item">
+                              <span class="checkbox-label checkbox-label__title">Другое</span>
+                              <input name="packaging[]" value="Другое" type="checkbox" class="custom-checkbox" id="apy6">
+                              <label for="apy6">
+                                <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M1 9L4.23309 11.4248C4.66178 11.7463 5.26772 11.6728 5.60705 11.2581L14 1" stroke="white" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="options-box__btn-help">
+                  Нужна помощь с машиной
+                  <input name="need_help" value="Нужна помощь с машиной" type="checkbox" class="options-box__btn-help-input" id="help-checkbox3">
+                  <label for="help-checkbox3" class="options-box__custom-checkbox">
+                    <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 9L4.23309 11.4248C4.66178 11.7463 5.26772 11.6728 5.60705 11.2581L14 1" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                  </label>
+                  <span></span>
+                </div>
+              </div>
+              <!-- Выбор машины  -->
+              <div class="form-delivery__select-box select-box">
+                <div class="select-box__top">
+                  <h3 class="select-box__title">Выберите машину</h3>
+                  <div class="selectSwiper__pogination">
+                    <div class="selectSwiper-prev">
+                      <div class="selectSwiper-prev__svg-box">
+                        <svg class="pogination-svg" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M2.5 5.5L1.9 4.7L0.833333 5.5L1.9 6.3L2.5 5.5ZM18.5 6.5C19.0523 6.5 19.5 6.05228 19.5 5.5C19.5 4.94772 19.0523 4.5 18.5 4.5V6.5ZM7.83333 1.5L7.23333 0.7L1.9 4.7L2.5 5.5L3.1 6.3L8.43333 2.3L7.83333 1.5ZM2.5 5.5L1.9 6.3L7.23333 10.3L7.83333 9.5L8.43333 8.7L3.1 4.7L2.5 5.5ZM2.5 5.5V6.5H18.5V5.5V4.5H2.5V5.5Z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="selectSwiper-next">
+                      <div class="selectSwiper-next__svg-box">
+                        <svg class="pogination-svg" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M17.5 5.5L18.1 4.7L19.1667 5.5L18.1 6.3L17.5 5.5ZM1.5 6.5C0.947716 6.5 0.5 6.05228 0.5 5.5C0.5 4.94772 0.947716 4.5 1.5 4.5V6.5ZM12.1667 1.5L12.7667 0.7L18.1 4.7L17.5 5.5L16.9 6.3L11.5667 2.3L12.1667 1.5ZM17.5 5.5L18.1 6.3L12.7667 10.3L12.1667 9.5L11.5667 8.7L16.9 4.7L17.5 5.5ZM17.5 5.5V6.5H1.5V5.5V4.5H17.5V5.5Z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="select-box__bottom">
+                  <div class="swiper selectSwiper">
+                    <div class="swiper-wrapper selectSwiper-wrapper">
+                      <!-- 1категория -->
+                      <div class="swiper-slide selectSwiper-slide">
+                        <div class="selectSwiper-card">
+                          <!-- Добавляем скрытый радио-инпут -->
+                          <input value="Тентовые машины|1,5т|1.8м|1.8м" type="radio" name="carType" id="carType1" class="card-radio-input">
+                          <!-- Обертываем содержимое карточки в label для радио-кнопки -->
+                          <label for="carType1" class="selectSwiper-card__content">
+                            <div class="selectSwiper-card__top">
+                              <h3 class="selectSwiper-card__title">Тентовые машины</h3>
+
+                            </div>
+                            <div class="selectSwiper-card__mid card-mid">
+                              <div class="card-mid__img-box">
+                                <img src="images\cars\T1.png" alt="">
+                              </div>
+                            </div>
+                            <div class="selectSwiper-card__bottom">
+                              <!-- Добавляем stopPropagation для кнопки с подсказкой -->
+                              <div class="selectSwiper-card__top-svg-box" id="svgBox" aria-describedby="tooltip" onclick="event.stopPropagation()">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9.18 17.476C8.04 17.476 6.972 17.26 5.976 16.828C4.98 16.408 4.098 15.82 3.33 15.064C2.574 14.296 1.98 13.414 1.548 12.418C1.128 11.422 0.918 10.354 0.918 9.214C0.918 8.074 1.128 7.006 1.548 6.01C1.98 5.014 2.574 4.138 3.33 3.382C4.098 2.614 4.98 2.02 5.976 1.6C6.972 1.168 8.04 0.952 9.18 0.952C10.32 0.952 11.388 1.168 12.384 1.6C13.38 2.02 14.256 2.614 15.012 3.382C15.78 4.138 16.374 5.014 16.794 6.01C17.226 7.006 17.442 8.074 17.442 9.214C17.442 10.354 17.226 11.422 16.794 12.418C16.374 13.414 15.78 14.296 15.012 15.064C14.256 15.82 13.38 16.408 12.384 16.828C11.388 17.26 10.32 17.476 9.18 17.476ZM9.18 15.928C10.104 15.928 10.968 15.754 11.772 15.406C12.588 15.058 13.302 14.578 13.914 13.966C14.538 13.342 15.024 12.628 15.372 11.824C15.72 11.008 15.894 10.138 15.894 9.214C15.894 8.29 15.72 7.426 15.372 6.622C15.024 5.806 14.538 5.092 13.914 4.48C13.302 3.856 12.588 3.37 11.772 3.022C10.968 2.674 10.104 2.5 9.18 2.5C8.256 2.5 7.386 2.674 6.57 3.022C5.766 3.37 5.052 3.856 4.428 4.48C3.816 5.092 3.336 5.806 2.988 6.622C2.64 7.426 2.466 8.29 2.466 9.214C2.466 10.138 2.64 11.008 2.988 11.824C3.336 12.628 3.816 13.342 4.428 13.966C5.052 14.578 5.766 15.058 6.57 15.406C7.386 15.754 8.256 15.928 9.18 15.928ZM9.18 6.28C8.916 6.28 8.682 6.22 8.478 6.1C8.286 5.968 8.19 5.734 8.19 5.398C8.19 5.038 8.292 4.804 8.496 4.696C8.712 4.576 8.94 4.516 9.18 4.516C9.828 4.516 10.152 4.81 10.152 5.398C10.152 5.734 10.05 5.968 9.846 6.1C9.642 6.22 9.42 6.28 9.18 6.28ZM8.262 13.732V7.108H10.08V13.732H8.262Z" fill="#333333" />
+                                </svg>
+                                <div id="tooltip" class="custom-tooltip">Это подсказка слева! Это подсказка слева! Это подсказка слева!</div>
+                              </div>
+                              <div class="selectSwiper-card__bottom-weight">
+                                <img src="images\icon\Weight.png" alt="">
+                                <span class="weight-value">1,5 т</span>
+                              </div>
+                              <div class="selectSwiper-card__bottom-size card-bottom-size">
+                                <div class="card-bottom-size__height">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 9.91663L17 29.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16.7965 3.11818L10.8202 11.4851C10.442 12.0145 10.8205 12.75 11.4712 12.75L22.5287 12.75C23.1794 12.75 23.5579 12.0145 23.1797 11.485L17.2034 3.11818C17.1037 2.97859 16.8962 2.97859 16.7965 3.11818Z" fill="#333333" />
+                                    <path d="M16.7965 33.7152L10.8202 25.3483C10.442 24.8188 10.8205 24.0833 11.4712 24.0833L22.5287 24.0833C23.1794 24.0833 23.5579 24.8188 23.1797 25.3483L17.2034 33.7152C17.1037 33.8548 16.8962 33.8548 16.7965 33.7152Z" fill="#333333" />
+                                  </svg>
+                                  <span>1.8 М</span>
+                                </div>
+                                <div class="card-bottom-size__width">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.91663 17L29.75 17" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.11818 17.2035L11.4851 23.1798C12.0145 23.558 12.75 23.1795 12.75 22.5288L12.75 11.4713C12.75 10.8206 12.0145 10.4421 11.485 10.8203L3.11818 16.7966C2.97859 16.8963 2.97859 17.1038 3.11818 17.2035Z" fill="#333333" />
+                                    <path d="M33.7152 17.2035L25.3483 23.1798C24.8188 23.558 24.0833 23.1795 24.0833 22.5288L24.0833 11.4713C24.0833 10.8206 24.8188 10.4421 25.3483 10.8203L33.7152 16.7966C33.8548 16.8963 33.8548 17.1038 33.7152 17.2035Z" fill="#333333" />
+                                  </svg>
+                                  <span>1,8 М</span>
+                                </div>
+                              </div>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="swiper-slide selectSwiper-slide">
+                        <div class="selectSwiper-card">
+                          <!-- Добавляем скрытый радио-инпут -->
+                          <input value="Бортовые машины|1,5т|1.8м|1.8м" type="radio" name="carType" id="carType1" class="card-radio-input">
+                          <!-- Обертываем содержимое карточки в label для радио-кнопки -->
+                          <label for="carType1" class="selectSwiper-card__content">
+                            <div class="selectSwiper-card__top">
+                              <h3 class="selectSwiper-card__title">Бортовые машины</h3>
+
+                            </div>
+                            <div class="selectSwiper-card__mid card-mid">
+                              <div class="card-mid__img-box">
+                                <img src="images\cars\B1.png" alt="">
+                              </div>
+                            </div>
+                            <div class="selectSwiper-card__bottom">
+                              <!-- Добавляем stopPropagation для кнопки с подсказкой -->
+                              <div class="selectSwiper-card__top-svg-box" id="svgBox" aria-describedby="tooltip" onclick="event.stopPropagation()">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9.18 17.476C8.04 17.476 6.972 17.26 5.976 16.828C4.98 16.408 4.098 15.82 3.33 15.064C2.574 14.296 1.98 13.414 1.548 12.418C1.128 11.422 0.918 10.354 0.918 9.214C0.918 8.074 1.128 7.006 1.548 6.01C1.98 5.014 2.574 4.138 3.33 3.382C4.098 2.614 4.98 2.02 5.976 1.6C6.972 1.168 8.04 0.952 9.18 0.952C10.32 0.952 11.388 1.168 12.384 1.6C13.38 2.02 14.256 2.614 15.012 3.382C15.78 4.138 16.374 5.014 16.794 6.01C17.226 7.006 17.442 8.074 17.442 9.214C17.442 10.354 17.226 11.422 16.794 12.418C16.374 13.414 15.78 14.296 15.012 15.064C14.256 15.82 13.38 16.408 12.384 16.828C11.388 17.26 10.32 17.476 9.18 17.476ZM9.18 15.928C10.104 15.928 10.968 15.754 11.772 15.406C12.588 15.058 13.302 14.578 13.914 13.966C14.538 13.342 15.024 12.628 15.372 11.824C15.72 11.008 15.894 10.138 15.894 9.214C15.894 8.29 15.72 7.426 15.372 6.622C15.024 5.806 14.538 5.092 13.914 4.48C13.302 3.856 12.588 3.37 11.772 3.022C10.968 2.674 10.104 2.5 9.18 2.5C8.256 2.5 7.386 2.674 6.57 3.022C5.766 3.37 5.052 3.856 4.428 4.48C3.816 5.092 3.336 5.806 2.988 6.622C2.64 7.426 2.466 8.29 2.466 9.214C2.466 10.138 2.64 11.008 2.988 11.824C3.336 12.628 3.816 13.342 4.428 13.966C5.052 14.578 5.766 15.058 6.57 15.406C7.386 15.754 8.256 15.928 9.18 15.928ZM9.18 6.28C8.916 6.28 8.682 6.22 8.478 6.1C8.286 5.968 8.19 5.734 8.19 5.398C8.19 5.038 8.292 4.804 8.496 4.696C8.712 4.576 8.94 4.516 9.18 4.516C9.828 4.516 10.152 4.81 10.152 5.398C10.152 5.734 10.05 5.968 9.846 6.1C9.642 6.22 9.42 6.28 9.18 6.28ZM8.262 13.732V7.108H10.08V13.732H8.262Z" fill="#333333" />
+                                </svg>
+                                <div id="tooltip" class="custom-tooltip">Это подсказка слева! Это подсказка слева! Это подсказка слева!</div>
+                              </div>
+                              <div class="selectSwiper-card__bottom-weight">
+                                <img src="images\icon\Weight.png" alt="">
+                                <span class="weight-value">1,5 Т</span>
+                              </div>
+                              <div class="selectSwiper-card__bottom-size card-bottom-size">
+                                <div class="card-bottom-size__height">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 9.91663L17 29.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16.7965 3.11818L10.8202 11.4851C10.442 12.0145 10.8205 12.75 11.4712 12.75L22.5287 12.75C23.1794 12.75 23.5579 12.0145 23.1797 11.485L17.2034 3.11818C17.1037 2.97859 16.8962 2.97859 16.7965 3.11818Z" fill="#333333" />
+                                    <path d="M16.7965 33.7152L10.8202 25.3483C10.442 24.8188 10.8205 24.0833 11.4712 24.0833L22.5287 24.0833C23.1794 24.0833 23.5579 24.8188 23.1797 25.3483L17.2034 33.7152C17.1037 33.8548 16.8962 33.8548 16.7965 33.7152Z" fill="#333333" />
+                                  </svg>
+                                  <span>1,8 м</span>
+                                </div>
+                                <div class="card-bottom-size__width">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.91663 17L29.75 17" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.11818 17.2035L11.4851 23.1798C12.0145 23.558 12.75 23.1795 12.75 22.5288L12.75 11.4713C12.75 10.8206 12.0145 10.4421 11.485 10.8203L3.11818 16.7966C2.97859 16.8963 2.97859 17.1038 3.11818 17.2035Z" fill="#333333" />
+                                    <path d="M33.7152 17.2035L25.3483 23.1798C24.8188 23.558 24.0833 23.1795 24.0833 22.5288L24.0833 11.4713C24.0833 10.8206 24.8188 10.4421 25.3483 10.8203L33.7152 16.7966C33.8548 16.8963 33.8548 17.1038 33.7152 17.2035Z" fill="#333333" />
+                                  </svg>
+                                  <span>1,8 м</span>
+                                </div>
+                              </div>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="swiper-slide selectSwiper-slide">
+                        <div class="selectSwiper-card">
+                          <!-- Добавляем скрытый радио-инпут -->
+                          <input value="Манипуляторы|1,5т|1.8м|1.8м" type="radio" name="carType" id="carType1" class="card-radio-input">
+                          <!-- Обертываем содержимое карточки в label для радио-кнопки -->
+                          <label for="carType1" class="selectSwiper-card__content">
+                            <div class="selectSwiper-card__top">
+                              <h3 class="selectSwiper-card__title">Манипуляторы</h3>
+
+                            </div>
+                            <div class="selectSwiper-card__mid card-mid">
+                              <div class="card-mid__img-box">
+                                <img src="images\cars\M1.png" alt="">
+                              </div>
+                            </div>
+                            <div class="selectSwiper-card__bottom">
+                              <!-- Добавляем stopPropagation для кнопки с подсказкой -->
+                              <div class="selectSwiper-card__top-svg-box" id="svgBox" aria-describedby="tooltip" onclick="event.stopPropagation()">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9.18 17.476C8.04 17.476 6.972 17.26 5.976 16.828C4.98 16.408 4.098 15.82 3.33 15.064C2.574 14.296 1.98 13.414 1.548 12.418C1.128 11.422 0.918 10.354 0.918 9.214C0.918 8.074 1.128 7.006 1.548 6.01C1.98 5.014 2.574 4.138 3.33 3.382C4.098 2.614 4.98 2.02 5.976 1.6C6.972 1.168 8.04 0.952 9.18 0.952C10.32 0.952 11.388 1.168 12.384 1.6C13.38 2.02 14.256 2.614 15.012 3.382C15.78 4.138 16.374 5.014 16.794 6.01C17.226 7.006 17.442 8.074 17.442 9.214C17.442 10.354 17.226 11.422 16.794 12.418C16.374 13.414 15.78 14.296 15.012 15.064C14.256 15.82 13.38 16.408 12.384 16.828C11.388 17.26 10.32 17.476 9.18 17.476ZM9.18 15.928C10.104 15.928 10.968 15.754 11.772 15.406C12.588 15.058 13.302 14.578 13.914 13.966C14.538 13.342 15.024 12.628 15.372 11.824C15.72 11.008 15.894 10.138 15.894 9.214C15.894 8.29 15.72 7.426 15.372 6.622C15.024 5.806 14.538 5.092 13.914 4.48C13.302 3.856 12.588 3.37 11.772 3.022C10.968 2.674 10.104 2.5 9.18 2.5C8.256 2.5 7.386 2.674 6.57 3.022C5.766 3.37 5.052 3.856 4.428 4.48C3.816 5.092 3.336 5.806 2.988 6.622C2.64 7.426 2.466 8.29 2.466 9.214C2.466 10.138 2.64 11.008 2.988 11.824C3.336 12.628 3.816 13.342 4.428 13.966C5.052 14.578 5.766 15.058 6.57 15.406C7.386 15.754 8.256 15.928 9.18 15.928ZM9.18 6.28C8.916 6.28 8.682 6.22 8.478 6.1C8.286 5.968 8.19 5.734 8.19 5.398C8.19 5.038 8.292 4.804 8.496 4.696C8.712 4.576 8.94 4.516 9.18 4.516C9.828 4.516 10.152 4.81 10.152 5.398C10.152 5.734 10.05 5.968 9.846 6.1C9.642 6.22 9.42 6.28 9.18 6.28ZM8.262 13.732V7.108H10.08V13.732H8.262Z" fill="#333333" />
+                                </svg>
+                                <div id="tooltip" class="custom-tooltip">Это подсказка слева! Это подсказка слева! Это подсказка слева!</div>
+                              </div>
+                              <div class="selectSwiper-card__bottom-weight">
+                                <img src="images\icon\Weight.png" alt="">
+                                <span class="weight-value">1,5 Т</span>
+                              </div>
+                              <div class="selectSwiper-card__bottom-size card-bottom-size">
+                                <div class="card-bottom-size__height">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 9.91663L17 29.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16.7965 3.11818L10.8202 11.4851C10.442 12.0145 10.8205 12.75 11.4712 12.75L22.5287 12.75C23.1794 12.75 23.5579 12.0145 23.1797 11.485L17.2034 3.11818C17.1037 2.97859 16.8962 2.97859 16.7965 3.11818Z" fill="#333333" />
+                                    <path d="M16.7965 33.7152L10.8202 25.3483C10.442 24.8188 10.8205 24.0833 11.4712 24.0833L22.5287 24.0833C23.1794 24.0833 23.5579 24.8188 23.1797 25.3483L17.2034 33.7152C17.1037 33.8548 16.8962 33.8548 16.7965 33.7152Z" fill="#333333" />
+                                  </svg>
+                                  <span>1,8 м</span>
+                                </div>
+                                <div class="card-bottom-size__width">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.91663 17L29.75 17" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.11818 17.2035L11.4851 23.1798C12.0145 23.558 12.75 23.1795 12.75 22.5288L12.75 11.4713C12.75 10.8206 12.0145 10.4421 11.485 10.8203L3.11818 16.7966C2.97859 16.8963 2.97859 17.1038 3.11818 17.2035Z" fill="#333333" />
+                                    <path d="M33.7152 17.2035L25.3483 23.1798C24.8188 23.558 24.0833 23.1795 24.0833 22.5288L24.0833 11.4713C24.0833 10.8206 24.8188 10.4421 25.3483 10.8203L33.7152 16.7966C33.8548 16.8963 33.8548 17.1038 33.7152 17.2035Z" fill="#333333" />
+                                  </svg>
+                                  <span>1,8 м</span>
+                                </div>
+                              </div>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+                      <!-- 2категория -->
+                      <div class="swiper-slide selectSwiper-slide">
+                        <div class="selectSwiper-card">
+                          <!-- Добавляем скрытый радио-инпут -->
+                          <input value="Тентовые машины|3т|2м|2м" type="radio" name="carType" id="carType1" class="card-radio-input">
+                          <!-- Обертываем содержимое карточки в label для радио-кнопки -->
+                          <label for="carType1" class="selectSwiper-card__content">
+                            <div class="selectSwiper-card__top">
+                              <h3 class="selectSwiper-card__title">Тентовые машины</h3>
+
+                            </div>
+                            <div class="selectSwiper-card__mid card-mid">
+                              <div class="card-mid__img-box">
+                                <img src="images\cars\T2.png" alt="">
+                              </div>
+                            </div>
+                            <div class="selectSwiper-card__bottom">
+                              <!-- Добавляем stopPropagation для кнопки с подсказкой -->
+                              <div class="selectSwiper-card__top-svg-box" id="svgBox" aria-describedby="tooltip" onclick="event.stopPropagation()">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9.18 17.476C8.04 17.476 6.972 17.26 5.976 16.828C4.98 16.408 4.098 15.82 3.33 15.064C2.574 14.296 1.98 13.414 1.548 12.418C1.128 11.422 0.918 10.354 0.918 9.214C0.918 8.074 1.128 7.006 1.548 6.01C1.98 5.014 2.574 4.138 3.33 3.382C4.098 2.614 4.98 2.02 5.976 1.6C6.972 1.168 8.04 0.952 9.18 0.952C10.32 0.952 11.388 1.168 12.384 1.6C13.38 2.02 14.256 2.614 15.012 3.382C15.78 4.138 16.374 5.014 16.794 6.01C17.226 7.006 17.442 8.074 17.442 9.214C17.442 10.354 17.226 11.422 16.794 12.418C16.374 13.414 15.78 14.296 15.012 15.064C14.256 15.82 13.38 16.408 12.384 16.828C11.388 17.26 10.32 17.476 9.18 17.476ZM9.18 15.928C10.104 15.928 10.968 15.754 11.772 15.406C12.588 15.058 13.302 14.578 13.914 13.966C14.538 13.342 15.024 12.628 15.372 11.824C15.72 11.008 15.894 10.138 15.894 9.214C15.894 8.29 15.72 7.426 15.372 6.622C15.024 5.806 14.538 5.092 13.914 4.48C13.302 3.856 12.588 3.37 11.772 3.022C10.968 2.674 10.104 2.5 9.18 2.5C8.256 2.5 7.386 2.674 6.57 3.022C5.766 3.37 5.052 3.856 4.428 4.48C3.816 5.092 3.336 5.806 2.988 6.622C2.64 7.426 2.466 8.29 2.466 9.214C2.466 10.138 2.64 11.008 2.988 11.824C3.336 12.628 3.816 13.342 4.428 13.966C5.052 14.578 5.766 15.058 6.57 15.406C7.386 15.754 8.256 15.928 9.18 15.928ZM9.18 6.28C8.916 6.28 8.682 6.22 8.478 6.1C8.286 5.968 8.19 5.734 8.19 5.398C8.19 5.038 8.292 4.804 8.496 4.696C8.712 4.576 8.94 4.516 9.18 4.516C9.828 4.516 10.152 4.81 10.152 5.398C10.152 5.734 10.05 5.968 9.846 6.1C9.642 6.22 9.42 6.28 9.18 6.28ZM8.262 13.732V7.108H10.08V13.732H8.262Z" fill="#333333" />
+                                </svg>
+                                <div id="tooltip" class="custom-tooltip">Это подсказка слева! Это подсказка слева! Это подсказка слева!</div>
+                              </div>
+                              <div class="selectSwiper-card__bottom-weight">
+                                <img src="images\icon\Weight.png" alt="">
+                                <span class="weight-value">3 т</span>
+                              </div>
+                              <div class="selectSwiper-card__bottom-size card-bottom-size">
+                                <div class="card-bottom-size__height">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 9.91663L17 29.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16.7965 3.11818L10.8202 11.4851C10.442 12.0145 10.8205 12.75 11.4712 12.75L22.5287 12.75C23.1794 12.75 23.5579 12.0145 23.1797 11.485L17.2034 3.11818C17.1037 2.97859 16.8962 2.97859 16.7965 3.11818Z" fill="#333333" />
+                                    <path d="M16.7965 33.7152L10.8202 25.3483C10.442 24.8188 10.8205 24.0833 11.4712 24.0833L22.5287 24.0833C23.1794 24.0833 23.5579 24.8188 23.1797 25.3483L17.2034 33.7152C17.1037 33.8548 16.8962 33.8548 16.7965 33.7152Z" fill="#333333" />
+                                  </svg>
+                                  <span>2 м</span>
+                                </div>
+                                <div class="card-bottom-size__width">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.91663 17L29.75 17" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.11818 17.2035L11.4851 23.1798C12.0145 23.558 12.75 23.1795 12.75 22.5288L12.75 11.4713C12.75 10.8206 12.0145 10.4421 11.485 10.8203L3.11818 16.7966C2.97859 16.8963 2.97859 17.1038 3.11818 17.2035Z" fill="#333333" />
+                                    <path d="M33.7152 17.2035L25.3483 23.1798C24.8188 23.558 24.0833 23.1795 24.0833 22.5288L24.0833 11.4713C24.0833 10.8206 24.8188 10.4421 25.3483 10.8203L33.7152 16.7966C33.8548 16.8963 33.8548 17.1038 33.7152 17.2035Z" fill="#333333" />
+                                  </svg>
+                                  <span> 2 м</span>
+                                </div>
+                              </div>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="swiper-slide selectSwiper-slide">
+                        <div class="selectSwiper-card">
+                          <!-- Добавляем скрытый радио-инпут -->
+                          <input value="Бортовые машины|3т|2м|2м" type="radio" name="carType" id="carType1" class="card-radio-input">
+                          <!-- Обертываем содержимое карточки в label для радио-кнопки -->
+                          <label for="carType1" class="selectSwiper-card__content">
+                            <div class="selectSwiper-card__top">
+                              <h3 class="selectSwiper-card__title">Бортовые машины</h3>
+
+                            </div>
+                            <div class="selectSwiper-card__mid card-mid">
+                              <div class="card-mid__img-box">
+                                <img src="images\cars\B2.png" alt="">
+                              </div>
+                            </div>
+                            <div class="selectSwiper-card__bottom">
+                              <!-- Добавляем stopPropagation для кнопки с подсказкой -->
+                              <div class="selectSwiper-card__top-svg-box" id="svgBox" aria-describedby="tooltip" onclick="event.stopPropagation()">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9.18 17.476C8.04 17.476 6.972 17.26 5.976 16.828C4.98 16.408 4.098 15.82 3.33 15.064C2.574 14.296 1.98 13.414 1.548 12.418C1.128 11.422 0.918 10.354 0.918 9.214C0.918 8.074 1.128 7.006 1.548 6.01C1.98 5.014 2.574 4.138 3.33 3.382C4.098 2.614 4.98 2.02 5.976 1.6C6.972 1.168 8.04 0.952 9.18 0.952C10.32 0.952 11.388 1.168 12.384 1.6C13.38 2.02 14.256 2.614 15.012 3.382C15.78 4.138 16.374 5.014 16.794 6.01C17.226 7.006 17.442 8.074 17.442 9.214C17.442 10.354 17.226 11.422 16.794 12.418C16.374 13.414 15.78 14.296 15.012 15.064C14.256 15.82 13.38 16.408 12.384 16.828C11.388 17.26 10.32 17.476 9.18 17.476ZM9.18 15.928C10.104 15.928 10.968 15.754 11.772 15.406C12.588 15.058 13.302 14.578 13.914 13.966C14.538 13.342 15.024 12.628 15.372 11.824C15.72 11.008 15.894 10.138 15.894 9.214C15.894 8.29 15.72 7.426 15.372 6.622C15.024 5.806 14.538 5.092 13.914 4.48C13.302 3.856 12.588 3.37 11.772 3.022C10.968 2.674 10.104 2.5 9.18 2.5C8.256 2.5 7.386 2.674 6.57 3.022C5.766 3.37 5.052 3.856 4.428 4.48C3.816 5.092 3.336 5.806 2.988 6.622C2.64 7.426 2.466 8.29 2.466 9.214C2.466 10.138 2.64 11.008 2.988 11.824C3.336 12.628 3.816 13.342 4.428 13.966C5.052 14.578 5.766 15.058 6.57 15.406C7.386 15.754 8.256 15.928 9.18 15.928ZM9.18 6.28C8.916 6.28 8.682 6.22 8.478 6.1C8.286 5.968 8.19 5.734 8.19 5.398C8.19 5.038 8.292 4.804 8.496 4.696C8.712 4.576 8.94 4.516 9.18 4.516C9.828 4.516 10.152 4.81 10.152 5.398C10.152 5.734 10.05 5.968 9.846 6.1C9.642 6.22 9.42 6.28 9.18 6.28ZM8.262 13.732V7.108H10.08V13.732H8.262Z" fill="#333333" />
+                                </svg>
+                                <div id="tooltip" class="custom-tooltip">Это подсказка слева! Это подсказка слева! Это подсказка слева!</div>
+                              </div>
+                              <div class="selectSwiper-card__bottom-weight">
+                                <img src="images\icon\Weight.png" alt="">
+                                <span class="weight-value">3 т</span>
+                              </div>
+                              <div class="selectSwiper-card__bottom-size card-bottom-size">
+                                <div class="card-bottom-size__height">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 9.91663L17 29.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16.7965 3.11818L10.8202 11.4851C10.442 12.0145 10.8205 12.75 11.4712 12.75L22.5287 12.75C23.1794 12.75 23.5579 12.0145 23.1797 11.485L17.2034 3.11818C17.1037 2.97859 16.8962 2.97859 16.7965 3.11818Z" fill="#333333" />
+                                    <path d="M16.7965 33.7152L10.8202 25.3483C10.442 24.8188 10.8205 24.0833 11.4712 24.0833L22.5287 24.0833C23.1794 24.0833 23.5579 24.8188 23.1797 25.3483L17.2034 33.7152C17.1037 33.8548 16.8962 33.8548 16.7965 33.7152Z" fill="#333333" />
+                                  </svg>
+                                  <span>2 м</span>
+                                </div>
+                                <div class="card-bottom-size__width">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.91663 17L29.75 17" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.11818 17.2035L11.4851 23.1798C12.0145 23.558 12.75 23.1795 12.75 22.5288L12.75 11.4713C12.75 10.8206 12.0145 10.4421 11.485 10.8203L3.11818 16.7966C2.97859 16.8963 2.97859 17.1038 3.11818 17.2035Z" fill="#333333" />
+                                    <path d="M33.7152 17.2035L25.3483 23.1798C24.8188 23.558 24.0833 23.1795 24.0833 22.5288L24.0833 11.4713C24.0833 10.8206 24.8188 10.4421 25.3483 10.8203L33.7152 16.7966C33.8548 16.8963 33.8548 17.1038 33.7152 17.2035Z" fill="#333333" />
+                                  </svg>
+                                  <span> 2 м</span>
+                                </div>
+                              </div>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+
+                      <div class="swiper-slide selectSwiper-slide">
+                        <div class="selectSwiper-card">
+                          <!-- Добавляем скрытый радио-инпут -->
+                          <input value="Манипуляторы|3т|2м|2м" type="radio" name="carType" id="carType1" class="card-radio-input">
+                          <!-- Обертываем содержимое карточки в label для радио-кнопки -->
+                          <label for="carType1" class="selectSwiper-card__content">
+                            <div class="selectSwiper-card__top">
+                              <h3 class="selectSwiper-card__title">Манипуляторы</h3>
+
+                            </div>
+                            <div class="selectSwiper-card__mid card-mid">
+                              <div class="card-mid__img-box">
+                                <img src="images\cars\M2.png" alt="">
+                              </div>
+                            </div>
+                            <div class="selectSwiper-card__bottom">
+                              <!-- Добавляем stopPropagation для кнопки с подсказкой -->
+                              <div class="selectSwiper-card__top-svg-box" id="svgBox" aria-describedby="tooltip" onclick="event.stopPropagation()">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9.18 17.476C8.04 17.476 6.972 17.26 5.976 16.828C4.98 16.408 4.098 15.82 3.33 15.064C2.574 14.296 1.98 13.414 1.548 12.418C1.128 11.422 0.918 10.354 0.918 9.214C0.918 8.074 1.128 7.006 1.548 6.01C1.98 5.014 2.574 4.138 3.33 3.382C4.098 2.614 4.98 2.02 5.976 1.6C6.972 1.168 8.04 0.952 9.18 0.952C10.32 0.952 11.388 1.168 12.384 1.6C13.38 2.02 14.256 2.614 15.012 3.382C15.78 4.138 16.374 5.014 16.794 6.01C17.226 7.006 17.442 8.074 17.442 9.214C17.442 10.354 17.226 11.422 16.794 12.418C16.374 13.414 15.78 14.296 15.012 15.064C14.256 15.82 13.38 16.408 12.384 16.828C11.388 17.26 10.32 17.476 9.18 17.476ZM9.18 15.928C10.104 15.928 10.968 15.754 11.772 15.406C12.588 15.058 13.302 14.578 13.914 13.966C14.538 13.342 15.024 12.628 15.372 11.824C15.72 11.008 15.894 10.138 15.894 9.214C15.894 8.29 15.72 7.426 15.372 6.622C15.024 5.806 14.538 5.092 13.914 4.48C13.302 3.856 12.588 3.37 11.772 3.022C10.968 2.674 10.104 2.5 9.18 2.5C8.256 2.5 7.386 2.674 6.57 3.022C5.766 3.37 5.052 3.856 4.428 4.48C3.816 5.092 3.336 5.806 2.988 6.622C2.64 7.426 2.466 8.29 2.466 9.214C2.466 10.138 2.64 11.008 2.988 11.824C3.336 12.628 3.816 13.342 4.428 13.966C5.052 14.578 5.766 15.058 6.57 15.406C7.386 15.754 8.256 15.928 9.18 15.928ZM9.18 6.28C8.916 6.28 8.682 6.22 8.478 6.1C8.286 5.968 8.19 5.734 8.19 5.398C8.19 5.038 8.292 4.804 8.496 4.696C8.712 4.576 8.94 4.516 9.18 4.516C9.828 4.516 10.152 4.81 10.152 5.398C10.152 5.734 10.05 5.968 9.846 6.1C9.642 6.22 9.42 6.28 9.18 6.28ZM8.262 13.732V7.108H10.08V13.732H8.262Z" fill="#333333" />
+                                </svg>
+                                <div id="tooltip" class="custom-tooltip">Это подсказка слева! Это подсказка слева! Это подсказка слева!</div>
+                              </div>
+                              <div class="selectSwiper-card__bottom-weight">
+                                <img src="images\icon\Weight.png" alt="">
+                                <span class="weight-value">3 т</span>
+                              </div>
+                              <div class="selectSwiper-card__bottom-size card-bottom-size">
+                                <div class="card-bottom-size__height">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 9.91663L17 29.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16.7965 3.11818L10.8202 11.4851C10.442 12.0145 10.8205 12.75 11.4712 12.75L22.5287 12.75C23.1794 12.75 23.5579 12.0145 23.1797 11.485L17.2034 3.11818C17.1037 2.97859 16.8962 2.97859 16.7965 3.11818Z" fill="#333333" />
+                                    <path d="M16.7965 33.7152L10.8202 25.3483C10.442 24.8188 10.8205 24.0833 11.4712 24.0833L22.5287 24.0833C23.1794 24.0833 23.5579 24.8188 23.1797 25.3483L17.2034 33.7152C17.1037 33.8548 16.8962 33.8548 16.7965 33.7152Z" fill="#333333" />
+                                  </svg>
+                                  <span>2 м</span>
+                                </div>
+                                <div class="card-bottom-size__width">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.91663 17L29.75 17" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.11818 17.2035L11.4851 23.1798C12.0145 23.558 12.75 23.1795 12.75 22.5288L12.75 11.4713C12.75 10.8206 12.0145 10.4421 11.485 10.8203L3.11818 16.7966C2.97859 16.8963 2.97859 17.1038 3.11818 17.2035Z" fill="#333333" />
+                                    <path d="M33.7152 17.2035L25.3483 23.1798C24.8188 23.558 24.0833 23.1795 24.0833 22.5288L24.0833 11.4713C24.0833 10.8206 24.8188 10.4421 25.3483 10.8203L33.7152 16.7966C33.8548 16.8963 33.8548 17.1038 33.7152 17.2035Z" fill="#333333" />
+                                  </svg>
+                                  <span> 2 м</span>
+                                </div>
+                              </div>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+                      <!-- 3категория -->
+                      <div class="swiper-slide selectSwiper-slide">
+                        <div class="selectSwiper-card">
+                          <!-- Добавляем скрытый радио-инпут -->
+                          <input value="Тентовые машины|5т|2,1м|2,1м" type="radio" name="carType" id="carType1" class="card-radio-input">
+                          <!-- Обертываем содержимое карточки в label для радио-кнопки -->
+                          <label for="carType1" class="selectSwiper-card__content">
+                            <div class="selectSwiper-card__top">
+                              <h3 class="selectSwiper-card__title">Тентовые машины</h3>
+
+                            </div>
+                            <div class="selectSwiper-card__mid card-mid">
+                              <div class="card-mid__img-box">
+                                <img src="images\cars\T3.png" alt="">
+                              </div>
+                            </div>
+                            <div class="selectSwiper-card__bottom">
+                              <!-- Добавляем stopPropagation для кнопки с подсказкой -->
+                              <div class="selectSwiper-card__top-svg-box" id="svgBox" aria-describedby="tooltip" onclick="event.stopPropagation()">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9.18 17.476C8.04 17.476 6.972 17.26 5.976 16.828C4.98 16.408 4.098 15.82 3.33 15.064C2.574 14.296 1.98 13.414 1.548 12.418C1.128 11.422 0.918 10.354 0.918 9.214C0.918 8.074 1.128 7.006 1.548 6.01C1.98 5.014 2.574 4.138 3.33 3.382C4.098 2.614 4.98 2.02 5.976 1.6C6.972 1.168 8.04 0.952 9.18 0.952C10.32 0.952 11.388 1.168 12.384 1.6C13.38 2.02 14.256 2.614 15.012 3.382C15.78 4.138 16.374 5.014 16.794 6.01C17.226 7.006 17.442 8.074 17.442 9.214C17.442 10.354 17.226 11.422 16.794 12.418C16.374 13.414 15.78 14.296 15.012 15.064C14.256 15.82 13.38 16.408 12.384 16.828C11.388 17.26 10.32 17.476 9.18 17.476ZM9.18 15.928C10.104 15.928 10.968 15.754 11.772 15.406C12.588 15.058 13.302 14.578 13.914 13.966C14.538 13.342 15.024 12.628 15.372 11.824C15.72 11.008 15.894 10.138 15.894 9.214C15.894 8.29 15.72 7.426 15.372 6.622C15.024 5.806 14.538 5.092 13.914 4.48C13.302 3.856 12.588 3.37 11.772 3.022C10.968 2.674 10.104 2.5 9.18 2.5C8.256 2.5 7.386 2.674 6.57 3.022C5.766 3.37 5.052 3.856 4.428 4.48C3.816 5.092 3.336 5.806 2.988 6.622C2.64 7.426 2.466 8.29 2.466 9.214C2.466 10.138 2.64 11.008 2.988 11.824C3.336 12.628 3.816 13.342 4.428 13.966C5.052 14.578 5.766 15.058 6.57 15.406C7.386 15.754 8.256 15.928 9.18 15.928ZM9.18 6.28C8.916 6.28 8.682 6.22 8.478 6.1C8.286 5.968 8.19 5.734 8.19 5.398C8.19 5.038 8.292 4.804 8.496 4.696C8.712 4.576 8.94 4.516 9.18 4.516C9.828 4.516 10.152 4.81 10.152 5.398C10.152 5.734 10.05 5.968 9.846 6.1C9.642 6.22 9.42 6.28 9.18 6.28ZM8.262 13.732V7.108H10.08V13.732H8.262Z" fill="#333333" />
+                                </svg>
+                                <div id="tooltip" class="custom-tooltip">Это подсказка слева! Это подсказка слева! Это подсказка слева!</div>
+                              </div>
+                              <div class="selectSwiper-card__bottom-weight">
+                                <img src="images\icon\Weight.png" alt="">
+                                <span class="weight-value">5 т</span>
+                              </div>
+                              <div class="selectSwiper-card__bottom-size card-bottom-size">
+                                <div class="card-bottom-size__height">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 9.91663L17 29.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16.7965 3.11818L10.8202 11.4851C10.442 12.0145 10.8205 12.75 11.4712 12.75L22.5287 12.75C23.1794 12.75 23.5579 12.0145 23.1797 11.485L17.2034 3.11818C17.1037 2.97859 16.8962 2.97859 16.7965 3.11818Z" fill="#333333" />
+                                    <path d="M16.7965 33.7152L10.8202 25.3483C10.442 24.8188 10.8205 24.0833 11.4712 24.0833L22.5287 24.0833C23.1794 24.0833 23.5579 24.8188 23.1797 25.3483L17.2034 33.7152C17.1037 33.8548 16.8962 33.8548 16.7965 33.7152Z" fill="#333333" />
+                                  </svg>
+                                  <span>2,1 м</span>
+                                </div>
+                                <div class="card-bottom-size__width">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.91663 17L29.75 17" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.11818 17.2035L11.4851 23.1798C12.0145 23.558 12.75 23.1795 12.75 22.5288L12.75 11.4713C12.75 10.8206 12.0145 10.4421 11.485 10.8203L3.11818 16.7966C2.97859 16.8963 2.97859 17.1038 3.11818 17.2035Z" fill="#333333" />
+                                    <path d="M33.7152 17.2035L25.3483 23.1798C24.8188 23.558 24.0833 23.1795 24.0833 22.5288L24.0833 11.4713C24.0833 10.8206 24.8188 10.4421 25.3483 10.8203L33.7152 16.7966C33.8548 16.8963 33.8548 17.1038 33.7152 17.2035Z" fill="#333333" />
+                                  </svg>
+                                  <span> 2,1 м</span>
+                                </div>
+                              </div>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="swiper-slide selectSwiper-slide">
+                        <div class="selectSwiper-card">
+                          <!-- Добавляем скрытый радио-инпут -->
+                          <input value="Бортовые машины|5т|2,1м|2,1м" type="radio" name="carType" id="carType1" class="card-radio-input">
+                          <!-- Обертываем содержимое карточки в label для радио-кнопки -->
+                          <label for="carType1" class="selectSwiper-card__content">
+                            <div class="selectSwiper-card__top">
+                              <h3 class="selectSwiper-card__title">Бортовые машины</h3>
+
+                            </div>
+                            <div class="selectSwiper-card__mid card-mid">
+                              <div class="card-mid__img-box">
+                                <img src="images\cars\B3.png" alt="">
+                              </div>
+                            </div>
+                            <div class="selectSwiper-card__bottom">
+                              <!-- Добавляем stopPropagation для кнопки с подсказкой -->
+                              <div class="selectSwiper-card__top-svg-box" id="svgBox" aria-describedby="tooltip" onclick="event.stopPropagation()">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9.18 17.476C8.04 17.476 6.972 17.26 5.976 16.828C4.98 16.408 4.098 15.82 3.33 15.064C2.574 14.296 1.98 13.414 1.548 12.418C1.128 11.422 0.918 10.354 0.918 9.214C0.918 8.074 1.128 7.006 1.548 6.01C1.98 5.014 2.574 4.138 3.33 3.382C4.098 2.614 4.98 2.02 5.976 1.6C6.972 1.168 8.04 0.952 9.18 0.952C10.32 0.952 11.388 1.168 12.384 1.6C13.38 2.02 14.256 2.614 15.012 3.382C15.78 4.138 16.374 5.014 16.794 6.01C17.226 7.006 17.442 8.074 17.442 9.214C17.442 10.354 17.226 11.422 16.794 12.418C16.374 13.414 15.78 14.296 15.012 15.064C14.256 15.82 13.38 16.408 12.384 16.828C11.388 17.26 10.32 17.476 9.18 17.476ZM9.18 15.928C10.104 15.928 10.968 15.754 11.772 15.406C12.588 15.058 13.302 14.578 13.914 13.966C14.538 13.342 15.024 12.628 15.372 11.824C15.72 11.008 15.894 10.138 15.894 9.214C15.894 8.29 15.72 7.426 15.372 6.622C15.024 5.806 14.538 5.092 13.914 4.48C13.302 3.856 12.588 3.37 11.772 3.022C10.968 2.674 10.104 2.5 9.18 2.5C8.256 2.5 7.386 2.674 6.57 3.022C5.766 3.37 5.052 3.856 4.428 4.48C3.816 5.092 3.336 5.806 2.988 6.622C2.64 7.426 2.466 8.29 2.466 9.214C2.466 10.138 2.64 11.008 2.988 11.824C3.336 12.628 3.816 13.342 4.428 13.966C5.052 14.578 5.766 15.058 6.57 15.406C7.386 15.754 8.256 15.928 9.18 15.928ZM9.18 6.28C8.916 6.28 8.682 6.22 8.478 6.1C8.286 5.968 8.19 5.734 8.19 5.398C8.19 5.038 8.292 4.804 8.496 4.696C8.712 4.576 8.94 4.516 9.18 4.516C9.828 4.516 10.152 4.81 10.152 5.398C10.152 5.734 10.05 5.968 9.846 6.1C9.642 6.22 9.42 6.28 9.18 6.28ZM8.262 13.732V7.108H10.08V13.732H8.262Z" fill="#333333" />
+                                </svg>
+                                <div id="tooltip" class="custom-tooltip">Это подсказка слева! Это подсказка слева! Это подсказка слева!</div>
+                              </div>
+                              <div class="selectSwiper-card__bottom-weight">
+                                <img src="images\icon\Weight.png" alt="">
+                                <span class="weight-value">5 т</span>
+                              </div>
+                              <div class="selectSwiper-card__bottom-size card-bottom-size">
+                                <div class="card-bottom-size__height">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 9.91663L17 29.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16.7965 3.11818L10.8202 11.4851C10.442 12.0145 10.8205 12.75 11.4712 12.75L22.5287 12.75C23.1794 12.75 23.5579 12.0145 23.1797 11.485L17.2034 3.11818C17.1037 2.97859 16.8962 2.97859 16.7965 3.11818Z" fill="#333333" />
+                                    <path d="M16.7965 33.7152L10.8202 25.3483C10.442 24.8188 10.8205 24.0833 11.4712 24.0833L22.5287 24.0833C23.1794 24.0833 23.5579 24.8188 23.1797 25.3483L17.2034 33.7152C17.1037 33.8548 16.8962 33.8548 16.7965 33.7152Z" fill="#333333" />
+                                  </svg>
+                                  <span>2,1 м</span>
+                                </div>
+                                <div class="card-bottom-size__width">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.91663 17L29.75 17" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.11818 17.2035L11.4851 23.1798C12.0145 23.558 12.75 23.1795 12.75 22.5288L12.75 11.4713C12.75 10.8206 12.0145 10.4421 11.485 10.8203L3.11818 16.7966C2.97859 16.8963 2.97859 17.1038 3.11818 17.2035Z" fill="#333333" />
+                                    <path d="M33.7152 17.2035L25.3483 23.1798C24.8188 23.558 24.0833 23.1795 24.0833 22.5288L24.0833 11.4713C24.0833 10.8206 24.8188 10.4421 25.3483 10.8203L33.7152 16.7966C33.8548 16.8963 33.8548 17.1038 33.7152 17.2035Z" fill="#333333" />
+                                  </svg>
+                                  <span> 2,1 м</span>
+                                </div>
+                              </div>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="swiper-slide selectSwiper-slide">
+                        <div class="selectSwiper-card">
+                          <!-- Добавляем скрытый радио-инпут -->
+                          <input value="Манипуляторы|5т|2,1м|2,1м" type="radio" name="carType" id="carType1" class="card-radio-input">
+                          <!-- Обертываем содержимое карточки в label для радио-кнопки -->
+                          <label for="carType1" class="selectSwiper-card__content">
+                            <div class="selectSwiper-card__top">
+                              <h3 class="selectSwiper-card__title">Манипуляторы</h3>
+
+                            </div>
+                            <div class="selectSwiper-card__mid card-mid">
+                              <div class="card-mid__img-box">
+                                <img src="images\cars\M3.png" alt="">
+                              </div>
+                            </div>
+                            <div class="selectSwiper-card__bottom">
+                              <!-- Добавляем stopPropagation для кнопки с подсказкой -->
+                              <div class="selectSwiper-card__top-svg-box" id="svgBox" aria-describedby="tooltip" onclick="event.stopPropagation()">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9.18 17.476C8.04 17.476 6.972 17.26 5.976 16.828C4.98 16.408 4.098 15.82 3.33 15.064C2.574 14.296 1.98 13.414 1.548 12.418C1.128 11.422 0.918 10.354 0.918 9.214C0.918 8.074 1.128 7.006 1.548 6.01C1.98 5.014 2.574 4.138 3.33 3.382C4.098 2.614 4.98 2.02 5.976 1.6C6.972 1.168 8.04 0.952 9.18 0.952C10.32 0.952 11.388 1.168 12.384 1.6C13.38 2.02 14.256 2.614 15.012 3.382C15.78 4.138 16.374 5.014 16.794 6.01C17.226 7.006 17.442 8.074 17.442 9.214C17.442 10.354 17.226 11.422 16.794 12.418C16.374 13.414 15.78 14.296 15.012 15.064C14.256 15.82 13.38 16.408 12.384 16.828C11.388 17.26 10.32 17.476 9.18 17.476ZM9.18 15.928C10.104 15.928 10.968 15.754 11.772 15.406C12.588 15.058 13.302 14.578 13.914 13.966C14.538 13.342 15.024 12.628 15.372 11.824C15.72 11.008 15.894 10.138 15.894 9.214C15.894 8.29 15.72 7.426 15.372 6.622C15.024 5.806 14.538 5.092 13.914 4.48C13.302 3.856 12.588 3.37 11.772 3.022C10.968 2.674 10.104 2.5 9.18 2.5C8.256 2.5 7.386 2.674 6.57 3.022C5.766 3.37 5.052 3.856 4.428 4.48C3.816 5.092 3.336 5.806 2.988 6.622C2.64 7.426 2.466 8.29 2.466 9.214C2.466 10.138 2.64 11.008 2.988 11.824C3.336 12.628 3.816 13.342 4.428 13.966C5.052 14.578 5.766 15.058 6.57 15.406C7.386 15.754 8.256 15.928 9.18 15.928ZM9.18 6.28C8.916 6.28 8.682 6.22 8.478 6.1C8.286 5.968 8.19 5.734 8.19 5.398C8.19 5.038 8.292 4.804 8.496 4.696C8.712 4.576 8.94 4.516 9.18 4.516C9.828 4.516 10.152 4.81 10.152 5.398C10.152 5.734 10.05 5.968 9.846 6.1C9.642 6.22 9.42 6.28 9.18 6.28ZM8.262 13.732V7.108H10.08V13.732H8.262Z" fill="#333333" />
+                                </svg>
+                                <div id="tooltip" class="custom-tooltip">Это подсказка слева! Это подсказка слева! Это подсказка слева!</div>
+                              </div>
+                              <div class="selectSwiper-card__bottom-weight">
+                                <img src="images\icon\Weight.png" alt="">
+                                <span class="weight-value">5 т</span>
+                              </div>
+                              <div class="selectSwiper-card__bottom-size card-bottom-size">
+                                <div class="card-bottom-size__height">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 9.91663L17 29.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16.7965 3.11818L10.8202 11.4851C10.442 12.0145 10.8205 12.75 11.4712 12.75L22.5287 12.75C23.1794 12.75 23.5579 12.0145 23.1797 11.485L17.2034 3.11818C17.1037 2.97859 16.8962 2.97859 16.7965 3.11818Z" fill="#333333" />
+                                    <path d="M16.7965 33.7152L10.8202 25.3483C10.442 24.8188 10.8205 24.0833 11.4712 24.0833L22.5287 24.0833C23.1794 24.0833 23.5579 24.8188 23.1797 25.3483L17.2034 33.7152C17.1037 33.8548 16.8962 33.8548 16.7965 33.7152Z" fill="#333333" />
+                                  </svg>
+                                  <span>2,1 м</span>
+                                </div>
+                                <div class="card-bottom-size__width">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.91663 17L29.75 17" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.11818 17.2035L11.4851 23.1798C12.0145 23.558 12.75 23.1795 12.75 22.5288L12.75 11.4713C12.75 10.8206 12.0145 10.4421 11.485 10.8203L3.11818 16.7966C2.97859 16.8963 2.97859 17.1038 3.11818 17.2035Z" fill="#333333" />
+                                    <path d="M33.7152 17.2035L25.3483 23.1798C24.8188 23.558 24.0833 23.1795 24.0833 22.5288L24.0833 11.4713C24.0833 10.8206 24.8188 10.4421 25.3483 10.8203L33.7152 16.7966C33.8548 16.8963 33.8548 17.1038 33.7152 17.2035Z" fill="#333333" />
+                                  </svg>
+                                  <span> 2,1 м</span>
+                                </div>
+                              </div>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+                      <!-- 4категория -->
+                      <div class="swiper-slide selectSwiper-slide">
+                        <div class="selectSwiper-card">
+                          <!-- Добавляем скрытый радио-инпут -->
+                          <input value="Тентовые машины|10т|2,30м|2,45м" type="radio" name="carType" id="carType1" class="card-radio-input">
+                          <!-- Обертываем содержимое карточки в label для радио-кнопки -->
+                          <label for="carType1" class="selectSwiper-card__content">
+                            <div class="selectSwiper-card__top">
+                              <h3 class="selectSwiper-card__title">Тентовые машины</h3>
+
+                            </div>
+                            <div class="selectSwiper-card__mid card-mid">
+                              <div class="card-mid__img-box">
+                                <img src="images\cars\T3.png" alt="">
+                              </div>
+                            </div>
+                            <div class="selectSwiper-card__bottom">
+                              <!-- Добавляем stopPropagation для кнопки с подсказкой -->
+                              <div class="selectSwiper-card__top-svg-box" id="svgBox" aria-describedby="tooltip" onclick="event.stopPropagation()">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9.18 17.476C8.04 17.476 6.972 17.26 5.976 16.828C4.98 16.408 4.098 15.82 3.33 15.064C2.574 14.296 1.98 13.414 1.548 12.418C1.128 11.422 0.918 10.354 0.918 9.214C0.918 8.074 1.128 7.006 1.548 6.01C1.98 5.014 2.574 4.138 3.33 3.382C4.098 2.614 4.98 2.02 5.976 1.6C6.972 1.168 8.04 0.952 9.18 0.952C10.32 0.952 11.388 1.168 12.384 1.6C13.38 2.02 14.256 2.614 15.012 3.382C15.78 4.138 16.374 5.014 16.794 6.01C17.226 7.006 17.442 8.074 17.442 9.214C17.442 10.354 17.226 11.422 16.794 12.418C16.374 13.414 15.78 14.296 15.012 15.064C14.256 15.82 13.38 16.408 12.384 16.828C11.388 17.26 10.32 17.476 9.18 17.476ZM9.18 15.928C10.104 15.928 10.968 15.754 11.772 15.406C12.588 15.058 13.302 14.578 13.914 13.966C14.538 13.342 15.024 12.628 15.372 11.824C15.72 11.008 15.894 10.138 15.894 9.214C15.894 8.29 15.72 7.426 15.372 6.622C15.024 5.806 14.538 5.092 13.914 4.48C13.302 3.856 12.588 3.37 11.772 3.022C10.968 2.674 10.104 2.5 9.18 2.5C8.256 2.5 7.386 2.674 6.57 3.022C5.766 3.37 5.052 3.856 4.428 4.48C3.816 5.092 3.336 5.806 2.988 6.622C2.64 7.426 2.466 8.29 2.466 9.214C2.466 10.138 2.64 11.008 2.988 11.824C3.336 12.628 3.816 13.342 4.428 13.966C5.052 14.578 5.766 15.058 6.57 15.406C7.386 15.754 8.256 15.928 9.18 15.928ZM9.18 6.28C8.916 6.28 8.682 6.22 8.478 6.1C8.286 5.968 8.19 5.734 8.19 5.398C8.19 5.038 8.292 4.804 8.496 4.696C8.712 4.576 8.94 4.516 9.18 4.516C9.828 4.516 10.152 4.81 10.152 5.398C10.152 5.734 10.05 5.968 9.846 6.1C9.642 6.22 9.42 6.28 9.18 6.28ZM8.262 13.732V7.108H10.08V13.732H8.262Z" fill="#333333" />
+                                </svg>
+                                <div id="tooltip" class="custom-tooltip">Это подсказка слева! Это подсказка слева! Это подсказка слева!</div>
+                              </div>
+                              <div class="selectSwiper-card__bottom-weight">
+                                <img src="images\icon\Weight.png" alt="">
+                                <span class="weight-value">10 т</span>
+                              </div>
+                              <div class="selectSwiper-card__bottom-size card-bottom-size">
+                                <div class="card-bottom-size__height">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 9.91663L17 29.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16.7965 3.11818L10.8202 11.4851C10.442 12.0145 10.8205 12.75 11.4712 12.75L22.5287 12.75C23.1794 12.75 23.5579 12.0145 23.1797 11.485L17.2034 3.11818C17.1037 2.97859 16.8962 2.97859 16.7965 3.11818Z" fill="#333333" />
+                                    <path d="M16.7965 33.7152L10.8202 25.3483C10.442 24.8188 10.8205 24.0833 11.4712 24.0833L22.5287 24.0833C23.1794 24.0833 23.5579 24.8188 23.1797 25.3483L17.2034 33.7152C17.1037 33.8548 16.8962 33.8548 16.7965 33.7152Z" fill="#333333" />
+                                  </svg>
+                                  <span>2,30 м</span>
+                                </div>
+                                <div class="card-bottom-size__width">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.91663 17L29.75 17" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.11818 17.2035L11.4851 23.1798C12.0145 23.558 12.75 23.1795 12.75 22.5288L12.75 11.4713C12.75 10.8206 12.0145 10.4421 11.485 10.8203L3.11818 16.7966C2.97859 16.8963 2.97859 17.1038 3.11818 17.2035Z" fill="#333333" />
+                                    <path d="M33.7152 17.2035L25.3483 23.1798C24.8188 23.558 24.0833 23.1795 24.0833 22.5288L24.0833 11.4713C24.0833 10.8206 24.8188 10.4421 25.3483 10.8203L33.7152 16.7966C33.8548 16.8963 33.8548 17.1038 33.7152 17.2035Z" fill="#333333" />
+                                  </svg>
+                                  <span> 2,45 м</span>
+                                </div>
+                              </div>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="swiper-slide selectSwiper-slide">
+                        <div class="selectSwiper-card">
+                          <!-- Добавляем скрытый радио-инпут -->
+                          <input value="Бортовые машины|10т|2,30м|2,45м" type="radio" name="carType" id="carType1" class="card-radio-input">
+                          <!-- Обертываем содержимое карточки в label для радио-кнопки -->
+                          <label for="carType1" class="selectSwiper-card__content">
+                            <div class="selectSwiper-card__top">
+                              <h3 class="selectSwiper-card__title">Бортовые машины</h3>
+
+                            </div>
+                            <div class="selectSwiper-card__mid card-mid">
+                              <div class="card-mid__img-box">
+                                <img src="images\cars\B4.png" alt="">
+                              </div>
+                            </div>
+                            <div class="selectSwiper-card__bottom">
+                              <!-- Добавляем stopPropagation для кнопки с подсказкой -->
+                              <div class="selectSwiper-card__top-svg-box" id="svgBox" aria-describedby="tooltip" onclick="event.stopPropagation()">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9.18 17.476C8.04 17.476 6.972 17.26 5.976 16.828C4.98 16.408 4.098 15.82 3.33 15.064C2.574 14.296 1.98 13.414 1.548 12.418C1.128 11.422 0.918 10.354 0.918 9.214C0.918 8.074 1.128 7.006 1.548 6.01C1.98 5.014 2.574 4.138 3.33 3.382C4.098 2.614 4.98 2.02 5.976 1.6C6.972 1.168 8.04 0.952 9.18 0.952C10.32 0.952 11.388 1.168 12.384 1.6C13.38 2.02 14.256 2.614 15.012 3.382C15.78 4.138 16.374 5.014 16.794 6.01C17.226 7.006 17.442 8.074 17.442 9.214C17.442 10.354 17.226 11.422 16.794 12.418C16.374 13.414 15.78 14.296 15.012 15.064C14.256 15.82 13.38 16.408 12.384 16.828C11.388 17.26 10.32 17.476 9.18 17.476ZM9.18 15.928C10.104 15.928 10.968 15.754 11.772 15.406C12.588 15.058 13.302 14.578 13.914 13.966C14.538 13.342 15.024 12.628 15.372 11.824C15.72 11.008 15.894 10.138 15.894 9.214C15.894 8.29 15.72 7.426 15.372 6.622C15.024 5.806 14.538 5.092 13.914 4.48C13.302 3.856 12.588 3.37 11.772 3.022C10.968 2.674 10.104 2.5 9.18 2.5C8.256 2.5 7.386 2.674 6.57 3.022C5.766 3.37 5.052 3.856 4.428 4.48C3.816 5.092 3.336 5.806 2.988 6.622C2.64 7.426 2.466 8.29 2.466 9.214C2.466 10.138 2.64 11.008 2.988 11.824C3.336 12.628 3.816 13.342 4.428 13.966C5.052 14.578 5.766 15.058 6.57 15.406C7.386 15.754 8.256 15.928 9.18 15.928ZM9.18 6.28C8.916 6.28 8.682 6.22 8.478 6.1C8.286 5.968 8.19 5.734 8.19 5.398C8.19 5.038 8.292 4.804 8.496 4.696C8.712 4.576 8.94 4.516 9.18 4.516C9.828 4.516 10.152 4.81 10.152 5.398C10.152 5.734 10.05 5.968 9.846 6.1C9.642 6.22 9.42 6.28 9.18 6.28ZM8.262 13.732V7.108H10.08V13.732H8.262Z" fill="#333333" />
+                                </svg>
+                                <div id="tooltip" class="custom-tooltip">Это подсказка слева! Это подсказка слева! Это подсказка слева!</div>
+                              </div>
+                              <div class="selectSwiper-card__bottom-weight">
+                                <img src="images\icon\Weight.png" alt="">
+                                <span class="weight-value">10 т</span>
+                              </div>
+                              <div class="selectSwiper-card__bottom-size card-bottom-size">
+                                <div class="card-bottom-size__height">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 9.91663L17 29.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16.7965 3.11818L10.8202 11.4851C10.442 12.0145 10.8205 12.75 11.4712 12.75L22.5287 12.75C23.1794 12.75 23.5579 12.0145 23.1797 11.485L17.2034 3.11818C17.1037 2.97859 16.8962 2.97859 16.7965 3.11818Z" fill="#333333" />
+                                    <path d="M16.7965 33.7152L10.8202 25.3483C10.442 24.8188 10.8205 24.0833 11.4712 24.0833L22.5287 24.0833C23.1794 24.0833 23.5579 24.8188 23.1797 25.3483L17.2034 33.7152C17.1037 33.8548 16.8962 33.8548 16.7965 33.7152Z" fill="#333333" />
+                                  </svg>
+                                  <span>2,30 м</span>
+                                </div>
+                                <div class="card-bottom-size__width">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.91663 17L29.75 17" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.11818 17.2035L11.4851 23.1798C12.0145 23.558 12.75 23.1795 12.75 22.5288L12.75 11.4713C12.75 10.8206 12.0145 10.4421 11.485 10.8203L3.11818 16.7966C2.97859 16.8963 2.97859 17.1038 3.11818 17.2035Z" fill="#333333" />
+                                    <path d="M33.7152 17.2035L25.3483 23.1798C24.8188 23.558 24.0833 23.1795 24.0833 22.5288L24.0833 11.4713C24.0833 10.8206 24.8188 10.4421 25.3483 10.8203L33.7152 16.7966C33.8548 16.8963 33.8548 17.1038 33.7152 17.2035Z" fill="#333333" />
+                                  </svg>
+                                  <span> 2,45 м</span>
+                                </div>
+                              </div>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="swiper-slide selectSwiper-slide">
+                        <div class="selectSwiper-card">
+                          <!-- Добавляем скрытый радио-инпут -->
+                          <input value="Манипуляторы|10т|2,30м|2,45м" type="radio" name="carType" id="carType1" class="card-radio-input">
+                          <!-- Обертываем содержимое карточки в label для радио-кнопки -->
+                          <label for="carType1" class="selectSwiper-card__content">
+                            <div class="selectSwiper-card__top">
+                              <h3 class="selectSwiper-card__title">Манипуляторы</h3>
+
+                            </div>
+                            <div class="selectSwiper-card__mid card-mid">
+                              <div class="card-mid__img-box">
+                                <img src="images\cars\M4.png" alt="">
+                              </div>
+                            </div>
+                            <div class="selectSwiper-card__bottom">
+                              <!-- Добавляем stopPropagation для кнопки с подсказкой -->
+                              <div class="selectSwiper-card__top-svg-box" id="svgBox" aria-describedby="tooltip" onclick="event.stopPropagation()">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9.18 17.476C8.04 17.476 6.972 17.26 5.976 16.828C4.98 16.408 4.098 15.82 3.33 15.064C2.574 14.296 1.98 13.414 1.548 12.418C1.128 11.422 0.918 10.354 0.918 9.214C0.918 8.074 1.128 7.006 1.548 6.01C1.98 5.014 2.574 4.138 3.33 3.382C4.098 2.614 4.98 2.02 5.976 1.6C6.972 1.168 8.04 0.952 9.18 0.952C10.32 0.952 11.388 1.168 12.384 1.6C13.38 2.02 14.256 2.614 15.012 3.382C15.78 4.138 16.374 5.014 16.794 6.01C17.226 7.006 17.442 8.074 17.442 9.214C17.442 10.354 17.226 11.422 16.794 12.418C16.374 13.414 15.78 14.296 15.012 15.064C14.256 15.82 13.38 16.408 12.384 16.828C11.388 17.26 10.32 17.476 9.18 17.476ZM9.18 15.928C10.104 15.928 10.968 15.754 11.772 15.406C12.588 15.058 13.302 14.578 13.914 13.966C14.538 13.342 15.024 12.628 15.372 11.824C15.72 11.008 15.894 10.138 15.894 9.214C15.894 8.29 15.72 7.426 15.372 6.622C15.024 5.806 14.538 5.092 13.914 4.48C13.302 3.856 12.588 3.37 11.772 3.022C10.968 2.674 10.104 2.5 9.18 2.5C8.256 2.5 7.386 2.674 6.57 3.022C5.766 3.37 5.052 3.856 4.428 4.48C3.816 5.092 3.336 5.806 2.988 6.622C2.64 7.426 2.466 8.29 2.466 9.214C2.466 10.138 2.64 11.008 2.988 11.824C3.336 12.628 3.816 13.342 4.428 13.966C5.052 14.578 5.766 15.058 6.57 15.406C7.386 15.754 8.256 15.928 9.18 15.928ZM9.18 6.28C8.916 6.28 8.682 6.22 8.478 6.1C8.286 5.968 8.19 5.734 8.19 5.398C8.19 5.038 8.292 4.804 8.496 4.696C8.712 4.576 8.94 4.516 9.18 4.516C9.828 4.516 10.152 4.81 10.152 5.398C10.152 5.734 10.05 5.968 9.846 6.1C9.642 6.22 9.42 6.28 9.18 6.28ZM8.262 13.732V7.108H10.08V13.732H8.262Z" fill="#333333" />
+                                </svg>
+                                <div id="tooltip" class="custom-tooltip">Это подсказка слева! Это подсказка слева! Это подсказка слева!</div>
+                              </div>
+                              <div class="selectSwiper-card__bottom-weight">
+                                <img src="images\icon\Weight.png" alt="">
+                                <span class="weight-value">10 т</span>
+                              </div>
+                              <div class="selectSwiper-card__bottom-size card-bottom-size">
+                                <div class="card-bottom-size__height">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 9.91663L17 29.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16.7965 3.11818L10.8202 11.4851C10.442 12.0145 10.8205 12.75 11.4712 12.75L22.5287 12.75C23.1794 12.75 23.5579 12.0145 23.1797 11.485L17.2034 3.11818C17.1037 2.97859 16.8962 2.97859 16.7965 3.11818Z" fill="#333333" />
+                                    <path d="M16.7965 33.7152L10.8202 25.3483C10.442 24.8188 10.8205 24.0833 11.4712 24.0833L22.5287 24.0833C23.1794 24.0833 23.5579 24.8188 23.1797 25.3483L17.2034 33.7152C17.1037 33.8548 16.8962 33.8548 16.7965 33.7152Z" fill="#333333" />
+                                  </svg>
+                                  <span>2,30 м</span>
+                                </div>
+                                <div class="card-bottom-size__width">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.91663 17L29.75 17" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.11818 17.2035L11.4851 23.1798C12.0145 23.558 12.75 23.1795 12.75 22.5288L12.75 11.4713C12.75 10.8206 12.0145 10.4421 11.485 10.8203L3.11818 16.7966C2.97859 16.8963 2.97859 17.1038 3.11818 17.2035Z" fill="#333333" />
+                                    <path d="M33.7152 17.2035L25.3483 23.1798C24.8188 23.558 24.0833 23.1795 24.0833 22.5288L24.0833 11.4713C24.0833 10.8206 24.8188 10.4421 25.3483 10.8203L33.7152 16.7966C33.8548 16.8963 33.8548 17.1038 33.7152 17.2035Z" fill="#333333" />
+                                  </svg>
+                                  <span> 2,45 м</span>
+                                </div>
+                              </div>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+                      <!-- 5категория -->
+                      <div class="swiper-slide selectSwiper-slide">
+                        <div class="selectSwiper-card">
+                          <!-- Добавляем скрытый радио-инпут -->
+                          <input value="Тентовые машины|20т|2,45м|2,45м" type="radio" name="carType" id="carType1" class="card-radio-input">
+                          <!-- Обертываем содержимое карточки в label для радио-кнопки -->
+                          <label for="carType1" class="selectSwiper-card__content">
+                            <div class="selectSwiper-card__top">
+                              <h3 class="selectSwiper-card__title">Тентовые машины</h3>
+
+                            </div>
+                            <div class="selectSwiper-card__mid card-mid">
+                              <div class="card-mid__img-box">
+                                <img src="images\cars\T4.png" alt="">
+                              </div>
+                            </div>
+                            <div class="selectSwiper-card__bottom">
+                              <!-- Добавляем stopPropagation для кнопки с подсказкой -->
+                              <div class="selectSwiper-card__top-svg-box" id="svgBox" aria-describedby="tooltip" onclick="event.stopPropagation()">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9.18 17.476C8.04 17.476 6.972 17.26 5.976 16.828C4.98 16.408 4.098 15.82 3.33 15.064C2.574 14.296 1.98 13.414 1.548 12.418C1.128 11.422 0.918 10.354 0.918 9.214C0.918 8.074 1.128 7.006 1.548 6.01C1.98 5.014 2.574 4.138 3.33 3.382C4.098 2.614 4.98 2.02 5.976 1.6C6.972 1.168 8.04 0.952 9.18 0.952C10.32 0.952 11.388 1.168 12.384 1.6C13.38 2.02 14.256 2.614 15.012 3.382C15.78 4.138 16.374 5.014 16.794 6.01C17.226 7.006 17.442 8.074 17.442 9.214C17.442 10.354 17.226 11.422 16.794 12.418C16.374 13.414 15.78 14.296 15.012 15.064C14.256 15.82 13.38 16.408 12.384 16.828C11.388 17.26 10.32 17.476 9.18 17.476ZM9.18 15.928C10.104 15.928 10.968 15.754 11.772 15.406C12.588 15.058 13.302 14.578 13.914 13.966C14.538 13.342 15.024 12.628 15.372 11.824C15.72 11.008 15.894 10.138 15.894 9.214C15.894 8.29 15.72 7.426 15.372 6.622C15.024 5.806 14.538 5.092 13.914 4.48C13.302 3.856 12.588 3.37 11.772 3.022C10.968 2.674 10.104 2.5 9.18 2.5C8.256 2.5 7.386 2.674 6.57 3.022C5.766 3.37 5.052 3.856 4.428 4.48C3.816 5.092 3.336 5.806 2.988 6.622C2.64 7.426 2.466 8.29 2.466 9.214C2.466 10.138 2.64 11.008 2.988 11.824C3.336 12.628 3.816 13.342 4.428 13.966C5.052 14.578 5.766 15.058 6.57 15.406C7.386 15.754 8.256 15.928 9.18 15.928ZM9.18 6.28C8.916 6.28 8.682 6.22 8.478 6.1C8.286 5.968 8.19 5.734 8.19 5.398C8.19 5.038 8.292 4.804 8.496 4.696C8.712 4.576 8.94 4.516 9.18 4.516C9.828 4.516 10.152 4.81 10.152 5.398C10.152 5.734 10.05 5.968 9.846 6.1C9.642 6.22 9.42 6.28 9.18 6.28ZM8.262 13.732V7.108H10.08V13.732H8.262Z" fill="#333333" />
+                                </svg>
+                                <div id="tooltip" class="custom-tooltip">Это подсказка слева! Это подсказка слева! Это подсказка слева!</div>
+                              </div>
+                              <div class="selectSwiper-card__bottom-weight">
+                                <img src="images\icon\Weight.png" alt="">
+                                <span class="weight-value">20 т</span>
+                              </div>
+                              <div class="selectSwiper-card__bottom-size card-bottom-size">
+                                <div class="card-bottom-size__height">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 9.91663L17 29.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16.7965 3.11818L10.8202 11.4851C10.442 12.0145 10.8205 12.75 11.4712 12.75L22.5287 12.75C23.1794 12.75 23.5579 12.0145 23.1797 11.485L17.2034 3.11818C17.1037 2.97859 16.8962 2.97859 16.7965 3.11818Z" fill="#333333" />
+                                    <path d="M16.7965 33.7152L10.8202 25.3483C10.442 24.8188 10.8205 24.0833 11.4712 24.0833L22.5287 24.0833C23.1794 24.0833 23.5579 24.8188 23.1797 25.3483L17.2034 33.7152C17.1037 33.8548 16.8962 33.8548 16.7965 33.7152Z" fill="#333333" />
+                                  </svg>
+                                  <span>2,45 м</span>
+                                </div>
+                                <div class="card-bottom-size__width">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.91663 17L29.75 17" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.11818 17.2035L11.4851 23.1798C12.0145 23.558 12.75 23.1795 12.75 22.5288L12.75 11.4713C12.75 10.8206 12.0145 10.4421 11.485 10.8203L3.11818 16.7966C2.97859 16.8963 2.97859 17.1038 3.11818 17.2035Z" fill="#333333" />
+                                    <path d="M33.7152 17.2035L25.3483 23.1798C24.8188 23.558 24.0833 23.1795 24.0833 22.5288L24.0833 11.4713C24.0833 10.8206 24.8188 10.4421 25.3483 10.8203L33.7152 16.7966C33.8548 16.8963 33.8548 17.1038 33.7152 17.2035Z" fill="#333333" />
+                                  </svg>
+                                  <span> 2,45 м</span>
+                                </div>
+                              </div>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="swiper-slide selectSwiper-slide">
+                        <div class="selectSwiper-card">
+                          <!-- Добавляем скрытый радио-инпут -->
+                          <input value="Бортовые машины|20т|2,45м|2,45м" type="radio" name="carType" id="carType1" class="card-radio-input">
+                          <!-- Обертываем содержимое карточки в label для радио-кнопки -->
+                          <label for="carType1" class="selectSwiper-card__content">
+                            <div class="selectSwiper-card__top">
+                              <h3 class="selectSwiper-card__title">Бортовые машины</h3>
+
+                            </div>
+                            <div class="selectSwiper-card__mid card-mid">
+                              <div class="card-mid__img-box">
+                                <img src="images\cars\B4.png" alt="">
+                              </div>
+                            </div>
+                            <div class="selectSwiper-card__bottom">
+                              <!-- Добавляем stopPropagation для кнопки с подсказкой -->
+                              <div class="selectSwiper-card__top-svg-box" id="svgBox" aria-describedby="tooltip" onclick="event.stopPropagation()">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9.18 17.476C8.04 17.476 6.972 17.26 5.976 16.828C4.98 16.408 4.098 15.82 3.33 15.064C2.574 14.296 1.98 13.414 1.548 12.418C1.128 11.422 0.918 10.354 0.918 9.214C0.918 8.074 1.128 7.006 1.548 6.01C1.98 5.014 2.574 4.138 3.33 3.382C4.098 2.614 4.98 2.02 5.976 1.6C6.972 1.168 8.04 0.952 9.18 0.952C10.32 0.952 11.388 1.168 12.384 1.6C13.38 2.02 14.256 2.614 15.012 3.382C15.78 4.138 16.374 5.014 16.794 6.01C17.226 7.006 17.442 8.074 17.442 9.214C17.442 10.354 17.226 11.422 16.794 12.418C16.374 13.414 15.78 14.296 15.012 15.064C14.256 15.82 13.38 16.408 12.384 16.828C11.388 17.26 10.32 17.476 9.18 17.476ZM9.18 15.928C10.104 15.928 10.968 15.754 11.772 15.406C12.588 15.058 13.302 14.578 13.914 13.966C14.538 13.342 15.024 12.628 15.372 11.824C15.72 11.008 15.894 10.138 15.894 9.214C15.894 8.29 15.72 7.426 15.372 6.622C15.024 5.806 14.538 5.092 13.914 4.48C13.302 3.856 12.588 3.37 11.772 3.022C10.968 2.674 10.104 2.5 9.18 2.5C8.256 2.5 7.386 2.674 6.57 3.022C5.766 3.37 5.052 3.856 4.428 4.48C3.816 5.092 3.336 5.806 2.988 6.622C2.64 7.426 2.466 8.29 2.466 9.214C2.466 10.138 2.64 11.008 2.988 11.824C3.336 12.628 3.816 13.342 4.428 13.966C5.052 14.578 5.766 15.058 6.57 15.406C7.386 15.754 8.256 15.928 9.18 15.928ZM9.18 6.28C8.916 6.28 8.682 6.22 8.478 6.1C8.286 5.968 8.19 5.734 8.19 5.398C8.19 5.038 8.292 4.804 8.496 4.696C8.712 4.576 8.94 4.516 9.18 4.516C9.828 4.516 10.152 4.81 10.152 5.398C10.152 5.734 10.05 5.968 9.846 6.1C9.642 6.22 9.42 6.28 9.18 6.28ZM8.262 13.732V7.108H10.08V13.732H8.262Z" fill="#333333" />
+                                </svg>
+                                <div id="tooltip" class="custom-tooltip">Это подсказка слева! Это подсказка слева! Это подсказка слева!</div>
+                              </div>
+                              <div class="selectSwiper-card__bottom-weight">
+                                <img src="images\icon\Weight.png" alt="">
+                                <span class="weight-value">20 т</span>
+                              </div>
+                              <div class="selectSwiper-card__bottom-size card-bottom-size">
+                                <div class="card-bottom-size__height">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 9.91663L17 29.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16.7965 3.11818L10.8202 11.4851C10.442 12.0145 10.8205 12.75 11.4712 12.75L22.5287 12.75C23.1794 12.75 23.5579 12.0145 23.1797 11.485L17.2034 3.11818C17.1037 2.97859 16.8962 2.97859 16.7965 3.11818Z" fill="#333333" />
+                                    <path d="M16.7965 33.7152L10.8202 25.3483C10.442 24.8188 10.8205 24.0833 11.4712 24.0833L22.5287 24.0833C23.1794 24.0833 23.5579 24.8188 23.1797 25.3483L17.2034 33.7152C17.1037 33.8548 16.8962 33.8548 16.7965 33.7152Z" fill="#333333" />
+                                  </svg>
+                                  <span>2,45 м</span>
+                                </div>
+                                <div class="card-bottom-size__width">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.91663 17L29.75 17" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.11818 17.2035L11.4851 23.1798C12.0145 23.558 12.75 23.1795 12.75 22.5288L12.75 11.4713C12.75 10.8206 12.0145 10.4421 11.485 10.8203L3.11818 16.7966C2.97859 16.8963 2.97859 17.1038 3.11818 17.2035Z" fill="#333333" />
+                                    <path d="M33.7152 17.2035L25.3483 23.1798C24.8188 23.558 24.0833 23.1795 24.0833 22.5288L24.0833 11.4713C24.0833 10.8206 24.8188 10.4421 25.3483 10.8203L33.7152 16.7966C33.8548 16.8963 33.8548 17.1038 33.7152 17.2035Z" fill="#333333" />
+                                  </svg>
+                                  <span> 2,45 м</span>
+                                </div>
+                              </div>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="swiper-slide selectSwiper-slide">
+                        <div class="selectSwiper-card">
+                          <!-- Добавляем скрытый радио-инпут -->
+                          <input value="Манипуляторы|20т|2,45м|2,45м" type="radio" name="carType" id="carType1" class="card-radio-input">
+                          <!-- Обертываем содержимое карточки в label для радио-кнопки -->
+                          <label for="carType1" class="selectSwiper-card__content">
+                            <div class="selectSwiper-card__top">
+                              <h3 class="selectSwiper-card__title">Манипуляторы</h3>
+
+                            </div>
+                            <div class="selectSwiper-card__mid card-mid">
+                              <div class="card-mid__img-box">
+                                <img src="images\cars\M4.png" alt="">
+                              </div>
+                            </div>
+                            <div class="selectSwiper-card__bottom">
+                              <!-- Добавляем stopPropagation для кнопки с подсказкой -->
+                              <div class="selectSwiper-card__top-svg-box" id="svgBox" aria-describedby="tooltip" onclick="event.stopPropagation()">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9.18 17.476C8.04 17.476 6.972 17.26 5.976 16.828C4.98 16.408 4.098 15.82 3.33 15.064C2.574 14.296 1.98 13.414 1.548 12.418C1.128 11.422 0.918 10.354 0.918 9.214C0.918 8.074 1.128 7.006 1.548 6.01C1.98 5.014 2.574 4.138 3.33 3.382C4.098 2.614 4.98 2.02 5.976 1.6C6.972 1.168 8.04 0.952 9.18 0.952C10.32 0.952 11.388 1.168 12.384 1.6C13.38 2.02 14.256 2.614 15.012 3.382C15.78 4.138 16.374 5.014 16.794 6.01C17.226 7.006 17.442 8.074 17.442 9.214C17.442 10.354 17.226 11.422 16.794 12.418C16.374 13.414 15.78 14.296 15.012 15.064C14.256 15.82 13.38 16.408 12.384 16.828C11.388 17.26 10.32 17.476 9.18 17.476ZM9.18 15.928C10.104 15.928 10.968 15.754 11.772 15.406C12.588 15.058 13.302 14.578 13.914 13.966C14.538 13.342 15.024 12.628 15.372 11.824C15.72 11.008 15.894 10.138 15.894 9.214C15.894 8.29 15.72 7.426 15.372 6.622C15.024 5.806 14.538 5.092 13.914 4.48C13.302 3.856 12.588 3.37 11.772 3.022C10.968 2.674 10.104 2.5 9.18 2.5C8.256 2.5 7.386 2.674 6.57 3.022C5.766 3.37 5.052 3.856 4.428 4.48C3.816 5.092 3.336 5.806 2.988 6.622C2.64 7.426 2.466 8.29 2.466 9.214C2.466 10.138 2.64 11.008 2.988 11.824C3.336 12.628 3.816 13.342 4.428 13.966C5.052 14.578 5.766 15.058 6.57 15.406C7.386 15.754 8.256 15.928 9.18 15.928ZM9.18 6.28C8.916 6.28 8.682 6.22 8.478 6.1C8.286 5.968 8.19 5.734 8.19 5.398C8.19 5.038 8.292 4.804 8.496 4.696C8.712 4.576 8.94 4.516 9.18 4.516C9.828 4.516 10.152 4.81 10.152 5.398C10.152 5.734 10.05 5.968 9.846 6.1C9.642 6.22 9.42 6.28 9.18 6.28ZM8.262 13.732V7.108H10.08V13.732H8.262Z" fill="#333333" />
+                                </svg>
+                                <div id="tooltip" class="custom-tooltip">Это подсказка слева! Это подсказка слева! Это подсказка слева!</div>
+                              </div>
+                              <div class="selectSwiper-card__bottom-weight">
+                                <img src="images\icon\Weight.png" alt="">
+                                <span class="weight-value">20 т</span>
+                              </div>
+                              <div class="selectSwiper-card__bottom-size card-bottom-size">
+                                <div class="card-bottom-size__height">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 9.91663L17 29.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16.7965 3.11818L10.8202 11.4851C10.442 12.0145 10.8205 12.75 11.4712 12.75L22.5287 12.75C23.1794 12.75 23.5579 12.0145 23.1797 11.485L17.2034 3.11818C17.1037 2.97859 16.8962 2.97859 16.7965 3.11818Z" fill="#333333" />
+                                    <path d="M16.7965 33.7152L10.8202 25.3483C10.442 24.8188 10.8205 24.0833 11.4712 24.0833L22.5287 24.0833C23.1794 24.0833 23.5579 24.8188 23.1797 25.3483L17.2034 33.7152C17.1037 33.8548 16.8962 33.8548 16.7965 33.7152Z" fill="#333333" />
+                                  </svg>
+                                  <span>2,45 м</span>
+                                </div>
+                                <div class="card-bottom-size__width">
+                                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.91663 17L29.75 17" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.11818 17.2035L11.4851 23.1798C12.0145 23.558 12.75 23.1795 12.75 22.5288L12.75 11.4713C12.75 10.8206 12.0145 10.4421 11.485 10.8203L3.11818 16.7966C2.97859 16.8963 2.97859 17.1038 3.11818 17.2035Z" fill="#333333" />
+                                    <path d="M33.7152 17.2035L25.3483 23.1798C24.8188 23.558 24.0833 23.1795 24.0833 22.5288L24.0833 11.4713C24.0833 10.8206 24.8188 10.4421 25.3483 10.8203L33.7152 16.7966C33.8548 16.8963 33.8548 17.1038 33.7152 17.2035Z" fill="#333333" />
+                                  </svg>
+                                  <span> 2,45 м</span>
+                                </div>
+                              </div>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-delivery__contacts-box form-delivery-contacts-box">
+                <div class="form-delivery-contacts-wrapper">
+                  <div class="form-delivery-contacts">
+                    <input name="name" type="text" class="contacts-box__input" placeholder="Ваше имя:">
+                    <input name="phone" type="tel" class="contacts-box__input mask-input-two" placeholder="Телефон:">
+                  </div>
+                  <button type="submit" class="btn about-btn form-delivery-btn">
+                    <span>Оформить доставку</span>
+                    <div class="btn-arrow-box">
+                      <svg class="btn-arrow" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 5L17.6 4.2L18.6667 5L17.6 5.8L17 5ZM1 6C0.447716 6 0 5.55228 0 5C0 4.44772 0.447716 4 1 4V6ZM11.6667 1L12.2667 0.2L17.6 4.2L17 5L16.4 5.8L11.0667 1.8L11.6667 1ZM17 5L17.6 5.8L12.2667 9.8L11.6667 9L11.0667 8.2L16.4 4.2L17 5ZM17 5V6H1V5V4H17V5Z"></path>
+                      </svg>
+                    </div>
+                  </button>
+                </div>
+                <div class="contacts-box__policy-box">
+                  <div class="contacts-box__policy-box-check">
+                    <input required name="policy" value="1" type="checkbox" class="policy-box__btn-help-input" id="checkboxPolicyA">
+                    <label for="checkboxPolicyA" class="policy-box__custom-checkbox">
+                      <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 9L4.23309 11.4248C4.66178 11.7463 5.26772 11.6728 5.60705 11.2581L14 1" stroke="white" stroke-width="2" stroke-linecap="round" />
+                      </svg>
+                    </label>
+                  </div>
+                  <span class="contacts-box__policy-box-text contacts-box__policy-box-text-mb">я согласен(a) c <a href="##"> политикой конфиденциальности</a></span>
+                  <span class="contacts-box__policy-box-text contacts-box__policy-box-text-pc">Принимаем условия <a href="##"> политики конфиденциальности</a> компании</span>
+                </div>
+              </div>
+              <div class="form-delivery__terms-box form-delivery-terms">
+                <ul class="form-delivery-terms__list">
+                  <li class="form-delivery-terms__item terms__item">Выберите один из представленных вопросов или задайте свой собственный:</li>
+                  <li class="form-delivery-terms__item"><a href="##">Где узнать стоимость?</a></li>
+                  <li class="form-delivery-terms__item"><a href="##">Как заказать переезд?</a></li>
+                  <li class="form-delivery-terms__item"><a href="##">Как оплатить?</a></li>
+                  <li class="form-delivery-terms__item terms__item">Если у вас есть другой <a class="terms__item-link open-popup" id="openPopupBtn1" data-target="popup1" href="##"> вопрос</a>, не стесняйтесь задать его!</li>
+                </ul>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+
       <section class="faq">
         <div class="container">
           <div class="faq__content">

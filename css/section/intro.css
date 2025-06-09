@@ -5,7 +5,7 @@
 
 
 .intro__content {
-  background-image: radial-gradient(rgba(0, 0, 0, 0)0%, rgba(0, 0, 0, 1) 130%), url('../images/intro/bg.jpg');
+  background-image: radial-gradient(rgba(0, 0, 0, 0)0%, rgba(0, 0, 0, 1) 130%), url('/images/intro/bg.jpg');
   background-position: 35% 0;
   background-repeat: no-repeat;
   background-size: cover;
@@ -22,7 +22,7 @@
 }
 
 .intro__content-bg {
-  background-image: radial-gradient(rgba(0, 0, 0, 0)0%, rgba(0, 0, 0, 1) 130%), url('../images/intro/bg2.png');
+  background-image: radial-gradient(rgba(0, 0, 0, 0)0%, rgba(0, 0, 0, 1) 130%), url('/images/intro/bg2.png');
   background-position: 30% 0;
   background-repeat: no-repeat;
   background-size: cover;

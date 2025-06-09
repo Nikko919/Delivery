@@ -3,7 +3,7 @@
 }
 
 .main-form__content {
-  background-image: url('../images/form/0bdf791973372218533e0e4bd48a5581104dfe71.jpg');
+  background-image: url('/images/form/0bdf791973372218533e0e4bd48a5581104dfe71.jpg');
   background-position: 50% 0;
   /* background-position: 0 40%; */
   background-repeat: no-repeat;
@@ -42,7 +42,7 @@
 
 @media (min-width:1024px) {
   .main-form__content {
-    background-image: url('../images/form/0bdf791973372218533e0e4bd48a5581104dfe71.jpg');
+    background-image: url('/images/form/0bdf791973372218533e0e4bd48a5581104dfe71.jpg');
     /* background-position: 50% 0; */
     background-position: 0 40%;
     background-repeat: no-repeat;
