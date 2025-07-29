@@ -7,6 +7,8 @@
 }
 
 .btn>span {
+  min-width: 200px;
+
   display: inline-block;
   font-family: var(--Montserrat-SM);
   font-size: 16px;
@@ -26,6 +28,11 @@
   -moz-transition: 0.3s ease-in;
   -ms-transition: 0.3s ease-in;
   -o-transition: 0.3s ease-in;
+}
+
+/* новый стиль от кнопки  */
+.btn>span {
+  min-width: 200px;
 }
 
 .btn>div {
@@ -81,6 +88,12 @@
   .btn>span {
     font-size: 20px;
     padding: 15px 30px;
+    min-width: 200px;
+  }
+
+  /* новый стиль для кнопки  */
+  .btn>span {
+    min-width: 200px;
   }
 
   .btn-arrow {

@@ -3,8 +3,9 @@
 }
 
 .main-form__content {
-  background-image: url('/images/form/0bdf791973372218533e0e4bd48a5581104dfe71.jpg');
-  background-position: 50% 0;
+  background-image: url('/images/form/9a46e19f2947f24fbc1250f1eb49b7322cc76454.png');
+  /* background-position: 50% 0; */
+  background-position: center;
   /* background-position: 0 40%; */
   background-repeat: no-repeat;
   background-size: cover;
@@ -39,12 +40,29 @@
   color: var(--color-hero-title);
 }
 
+/* для того чтоб  кнопки нормальн овыглядили  */
+.main-form-btn-wrapper>.main-form__btn-box {
+  max-width: 375px;
+}
+
+.main-form-btn-wrapper>.main-form__btn-box>.form-btn {
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
 
 @media (min-width:1024px) {
   .main-form__content {
-    background-image: url('/images/form/0bdf791973372218533e0e4bd48a5581104dfe71.jpg');
+    background-image: url('/images/form/9a46e19f2947f24fbc1250f1eb49b7322cc76454.png');
     /* background-position: 50% 0; */
-    background-position: 0 40%;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 435px;
@@ -71,7 +89,8 @@
   }
 
   .main-form__content {
-    background-position: 0 40%;
+    background-position: center;
+    /* background-position: 0 40%; */
     min-height: 565px;
   }
 }

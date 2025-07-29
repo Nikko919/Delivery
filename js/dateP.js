@@ -6,22 +6,36 @@ document.addEventListener("DOMContentLoaded", function () {
     locale: "ru",
     onChange: function () {
       // Скрываем плейсхолдер при выборе даты
-      document.querySelector(".fake-placeholder").style.display = "none";
+      // document.querySelector(".fake-placeholder").style.display = "none";
     }
   });
 });
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
-  flatpickr(".time", {
-    enableTime: true,
-    noCalendar: true,
-    time_24hr: true,
-    disableMobile: false,
-    minTime: "09:00",
-    maxTime: "21:00",
-    locale: "ru",
-    onChange: function () {
-      // Скрываем плейсхолдер при выборе даты
-      document.querySelector(".fake-placeholder__time").style.display = "none";
-    }
+  const timeInputs = document.querySelectorAll(".time");
+  timeInputs.forEach(input => {
+    flatpickr(input, {
+      enableTime: true,
+      noCalendar: true,
+      time_24hr: true,
+      disableMobile: false,
+      minTime: "09:00",
+      maxTime: "21:00",
+      locale: "ru",
+      onChange: function () {
+        // Скрываем плейсхолдер при выборе времени
+        const placeholder = input.closest('form').querySelector(".fake-placeholder__time");
+        if (placeholder) {
+          placeholder.style.display = "none";
+        }
+      }
+    });
   });
 });
+
+
+

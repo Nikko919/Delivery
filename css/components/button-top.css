@@ -1,0 +1,61 @@
+.button-top {
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  background-color: var(--color-btn);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  cursor: pointer;
+  z-index: 300;
+  transition: background-color .3s ease;
+  -webkit-transition: background-color .3s ease;
+  -moz-transition: background-color .3s ease;
+  -ms-transition: background-color .3s ease;
+  -o-transition: background-color .3s ease;
+  display: none;
+}
+
+.go-top-show {
+  display: flex;
+}
+
+.button-top>.bottom-top-svg {
+  fill: var(--color-hero-title);
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+}
+
+.button-top>.bottom-top-svg {
+  width: 25px;
+  height: 25px;
+}
+
+
+@media (hover:hover) {
+  .button-top:hover {
+    background-color: var(--color-noactive);
+  }
+
+  .bottom-top-svg:hover {
+    fill: var(--color-card-bg);
+  }
+}
+
+
+@media (min-width:1220px) {
+  .button-top {
+    bottom: 100px;
+    right: 100px;
+  }
+}

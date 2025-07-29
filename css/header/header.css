@@ -78,7 +78,7 @@
 }
 
 .header__contact-soc {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 20px;
 }
@@ -199,8 +199,8 @@
 
 @media (min-width:1200px) {
   .logo {
-    width: 155px;
-    height: 65px;
+    width: 200px;
+    height: 85px;
   }
 
   .header__contact-box {

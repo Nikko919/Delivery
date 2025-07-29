@@ -11,7 +11,7 @@
     opacity: 0;
     pointer-events: none;
     transition: 0.5s all;
-    z-index: 100;
+    z-index: 400;
 }
 
 .popup__bg.active {
@@ -19,6 +19,9 @@
     pointer-events: all;
     transition: 0.5s all;
 }
+
+
+
 
 .popup {
     position: absolute;
@@ -64,6 +67,13 @@
     -o-transform: translate(-50%, -50%) scale(1);
 }
 
+
+
+.popup__inputs-bottom_reverses {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
 .close-popup {
     font-size: 30px;
     font-family: Helvetica, sans-serif;
@@ -87,25 +97,36 @@
     -o-transition: all 0.3s;
 }
 
+/* внес изменения 20px */
 .popup__top {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
+/* новые стили для попапа */
 .popup__title {
-    font-size: 24px;
+    font-size: 20px;
     line-height: 120%;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     color: var(--color-hero-title);
-
+    font-family: var(--Montserrat-SM);
 }
 
 .popup__text {
+
+    font-family: var(--Montserrat-R);
+    font-size: 14px;
     color: var(--color-hero-title);
 
 }
 
+.popup__box-btn {
+    margin-bottom: 20px;
+}
+
+/* внес изменения 20px */
+
 .popup__inputs-top {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .popup__input {
@@ -126,7 +147,7 @@
 }
 
 .popup__input:not(:last-child) {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .popup__input:focus,
@@ -161,16 +182,17 @@
 }
 
 .popup__inputs-link {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 120%;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     color: var(--color-hero-title);
+    font-family: var(--Montserrat-R);
 
 }
 
 .popup__btn {
     width: auto;
-    padding: 12px 35px;
+    padding: 20px 30px;
     color: var(--color-hero-title);
     font-size: 16px;
     background-color: var(--color-btn);
@@ -191,6 +213,49 @@
 @media (hover:hover) {
     .popup__btn:hover {
         background-color: var(--color-noactive);
+    }
+
+}
+
+/* новые стили для попапа */
+@media (min-width:1200px) {
+    .popup__inputs-link {
+        font-size: 18px;
+        line-height: 120%;
+        margin-bottom: 15px;
+        color: var(--color-hero-title);
+
+    }
+
+    .popup__title {
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+
+    .popup__text {
+        font-size: 18px;
+    }
+
+    .popup__input {
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+    }
+
+    .popup__btn {
+        padding: 20px 95px;
+        font-size: 20px;
+    }
+
+    .popup__inputs-bottom_reverses {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .popup__box-btn {
+        margin-bottom: 0;
     }
 
 }

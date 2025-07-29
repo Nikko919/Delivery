@@ -1,0 +1,170 @@
+.page-about {
+  margin-bottom: 120px;
+}
+
+.about-page-content {
+  background-image: radial-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 130%), url(/images/intro/ChatGPT\ Image\ 9\ июл.\ 2025\ г.\,\ 14_36_59.png);
+  background-position: right top;
+  background-repeat: no-repeat;
+  /* background-size: contain; */
+}
+
+
+
+/* .about-page-box-btn-top {
+  display: none;
+} */
+
+/* .about-page-title {
+  display: none;
+} */
+
+/* .about-page-btn {
+  display: none;
+} */
+
+
+.page-about-content-top-description-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.page-about-details {
+  margin-top: 20px;
+}
+
+.page-about-details-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+
+}
+
+.page-about-details-list-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 1);
+}
+
+.page-about-details-list-item>h3 {
+  font-family: var(--Montserrat-SM);
+  font-size: 20px;
+}
+
+.page-about-details-list-item>span {
+  max-width: 570px;
+  font-family: var(--Montserrat-R);
+  font-size: 14px;
+}
+
+.page-about-content-bottom-title {
+  font-family: var(--ST-Kosmolet);
+  font-size: 93px;
+  font-weight: 400;
+  color: var(--color-section-title);
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.page-about-content-bottom {
+  margin-top: 120px;
+}
+
+.page-about-content-bottom-cards-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.page-about-content-bottom-card {
+  padding: 40px 20px;
+  background-color: var(--color-btn);
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.page-about-content-bottom-card>h3 {
+  font-family: var(--Montserrat-SM);
+  font-size: 20px;
+  color: var(--color-hero-title);
+  margin-bottom: 20px;
+}
+
+.page-about-content-bottom-card>p {
+  font-family: var(--Montserrat-R);
+  font-size: 14px;
+  color: var(--color-hero-title);
+}
+
+.page-about-content-btn {
+  margin-top: 45px;
+}
+
+
+.page-about-main-form {
+  display: none;
+}
+
+@media(min-width:760px) {}
+
+@media(min-width:1024px) {
+  .page-about-main-form {
+    display: block;
+  }
+
+  .page-about-content-bottom-cards-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media(min-width:1200px) {
+  .page-about-content-bottom-title {
+    display: none;
+  }
+
+  .page-about-content-btn {
+    display: none;
+  }
+
+  .page-about-content-bottom {
+    margin-top: 0px;
+  }
+
+  .page-about-content-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 145px;
+  }
+
+  .page-about-details-list-item>span {
+    font-size: 18px;
+  }
+
+  .page-about-content-bottom-cards-box {
+    height: 100%;
+  }
+
+  .page-about-details {
+    margin-top: 40px;
+  }
+
+  .page-about-content-bottom-card {
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .page-about-content-bottom-card>p {
+    font-size: 18px;
+  }
+}

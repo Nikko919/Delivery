@@ -20,8 +20,17 @@
   background-color: transparent;
   padding: 20px 0;
   border-bottom: 1px solid rgba(224, 224, 224, 1);
+  position: relative;
+}
+
+/* новый код дляя вопрос ответ  */
+
+.accordion__title-btn>span {
+  margin-right: 20px;
+  max-width: 600px;
   font-family: var(--Montserrat-SM);
   font-size: 20px;
+  text-align: left;
 }
 
 .accordion__title-btn.active {
@@ -29,6 +38,8 @@
 }
 
 .accordion__title-btn svg {
+  position: absolute;
+  right: 0;
   width: 24px;
   height: 24px;
   transition: transform 0.3s ease;
@@ -99,7 +110,10 @@
     -webkit-transform: rotate(180deg);
   }
 
-  .accordion__title-btn {
+  /* новый код для вопрос ответ  */
+  .accordion__title-btn>span {
+    max-width: 900px;
+    text-align: left;
     font-size: 25px;
   }
 
